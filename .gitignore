@@ -1,0 +1,45 @@
+# Virtual environment
+v/*
+v
+venv/
+
+# Local media files
+static/media/*
+
+# Key file
+key.py
+
+# Python compiled files
+*.pyc
+
+# Local settings file
+local.py
+
+
+# not present
+ssl.txt
+
+learning.txt
+UI
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Server conf file
+server
+
+# AWS Config File
+aws_config.txt
+
+# Project settings
+secret
+
+# For people using IntelliJ Python IDE
+.idea
+.idea/*
+
+# dbs
+*.sqlite3
