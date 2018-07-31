@@ -1,0 +1,12 @@
+{% block content %}
+
+<form method='post' action="{% url 'main:check' %}" >
+    {% csrf_token%}
+        <tr><th>USERNAME:</th><td><input type="text" name="username" value=""/></td></tr><br>
+        <tr><th>PASSWORD:</th><td><input type="password" name="password" value=""/></td></tr><br>
+    <br>
+    <input type="submit" value="SUBMIT" />
+</form>
+    <br>
+<a href="{% url 'main:signup' %}" class="btn btn-info">Sign up</a>
+{% endblock %}

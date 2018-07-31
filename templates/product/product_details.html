@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="container">
+        {% if request.user.is_superuser %}
+            CREATE:<br/>
+            <a href="{% url 'product:category' %}" class="btn btn-success">Category</a>
+            <a href="{% url 'product:product' %}" class="btn btn-success">Product</a>
+        {% endif %}
+        <br/><hr/>
+            Product: {{ instance.name }}<br/>
+            Category: {{ instance.category }}<br/>
+            {% if instance.image %}
+                {{ instance.image.url }}
+                <img src="{{ instance.image.url }}" height="100px" width="100px"><br/>
+            {% else %}
+                <img src="https://www.brother.ca/resources/images/no-product-image.png" height="100px" width="100px"><br/>
+            {% endif %}
+            Price: {{ instance.price }}<br/>
+            Active: {{ instance.status }}<br/>
+            <br/>
+            {% if instance.created_by == request.user %}
+                <a href="{{instance.get_absolute_url}}edit" class="btn btn-info">Edit</a>
+            {% endif %}
+            <hr/>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for sm in sale_manager %}
+        <ul>
+            <li>
+            {{sm}}
+            {% for cust in customer %}
+                <ul>
+                    {% if cust.sale_manager == sm.user.username %}
+                        <li>
+                            {{cust}}
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+            </li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

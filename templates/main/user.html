@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!--{{ request.user }}<br/>-->
+    <!--{{ admin }}<br/>-->
+    <!--{{ manager }}<br/>-->
+    <!--{{ men }}<br/>-->
+
+    <br/>
+    {% if request.user.profile.user_type == 'salesadmin' %}
+        {{ request.user}}<span style="color:grey">(salesadmin)</span>
+        <ul>
+            {% for i in admin %}
+                {% if i.user.username == request.user.username %}
+                    {% for j in manager %}
+                        {% if j.sale_admin == i.user.username %}
+                            <li>
+                                {{j}} <span style="color:grey">(salesmanager)</span>
+                                <ul>
+                                    {% for k in men %}
+                                        {% if k.sale_manager == j.user.username %}
+                                            <li>
+                                                {{k}} <span style="color:grey">(salesmen)</span>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% elif request.user.profile.user_type == 'salesmanager' %}
+        {{ request.user}} <span style="color:grey">(salesmanager)</span> <br/>
+        <ul>
+            {% for j in manager %}
+                {% if j.user.username == request.user.username %}
+                    {% for k in men %}
+                        {% if k.sale_manager == j.user.username %}
+                            <li>
+                                {{k}} <span style="color:grey">(salesmen)</span>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{request.user}} <span style="color:grey">(salesmen)</span> <br/>
+    {% endif %}
+
+{% endblock %}
