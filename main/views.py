@@ -33,7 +33,7 @@ def signup(request):
                 f.profile.sale_admin = str(form.cleaned_data.get('sale_admin'))
                 f.profile.sale_manager = str(form.cleaned_data.get('sale_manager'))
                 f.save()
-                return redirect('main:index')
+                return redirect('main:user')
         else:
             form = SignUpForm()
         return render(request, 'main/signup.html', {'form': form})
@@ -77,7 +77,7 @@ def customer(request):
                 f = form.save(commit=False)
                 f.sale_manager = str(form.cleaned_data.get('sale_manager'))
                 f.save()
-                return redirect('main:index')
+                return redirect('main:customer_list')
         else:
             form = CustomerForm()
         return render(request, 'main/customer.html', {'form':form})

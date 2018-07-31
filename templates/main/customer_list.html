@@ -5,12 +5,12 @@
     {% for sm in sale_manager %}
         <ul>
             <li>
-            {{sm}}
+            {{sm}} <span style="color:grey">(salesmanager)</span>
             {% for cust in customer %}
                 <ul>
                     {% if cust.sale_manager == sm.user.username %}
                         <li>
-                            {{cust}}
+                            {{cust}} <span style="color:grey">(customer)</span>
                         </li>
                     {% endif %}
                 </ul>

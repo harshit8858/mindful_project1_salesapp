@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 
 USER_TYPE = (
+    ('salesadmin','SALES-ADMIN'),
     ('salesmanager','SALES-MANAGER'),
     ('salesmen','SALESMEN'),
 )

@@ -6,6 +6,7 @@ from .models import *
 
 
 USER_TYPE = (
+    ('salesadmin','SALES-ADMIN'),
     ('salesmanager','SALES-MANAGER'),
     ('salesmen','SALESMEN'),
 )
