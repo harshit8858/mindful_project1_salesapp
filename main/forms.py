@@ -37,6 +37,25 @@ class SignUpForm(UserCreationForm):
         )
 
 
+class EditUserForm(forms.ModelForm):
+    first_name = forms.CharField(required=True, widget=forms.TextInput())
+    last_name = forms.CharField(required=True, widget=forms.TextInput())
+    mobile = forms.IntegerField(required=True,widget=forms.NumberInput())
+    user_type = forms.ChoiceField(choices=USER_TYPE, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
+    sale_admin = ModelChoiceField(queryset=s_admin, required=False)
+    sale_manager = ModelChoiceField(queryset=s_manager, required=False)
+
+    class Meta:
+        model = Profile
+        fields = (
+            'first_name',
+            'last_name',
+            'mobile',
+            'user_type',
+            'sale_admin',
+            'sale_manager',
+        )
+
 
 class CustomerForm(forms.ModelForm):
     sale_manager = ModelChoiceField(queryset=s_manager, required=True)

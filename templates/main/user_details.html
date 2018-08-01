@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <hr/>
+    <div class="container">
+        Username: {{instance}}<br/>
+        Name: {{instance.first_name}} {{instance.last_name}}<br/>
+        Mobile: {{instance.mobile}}<br/>
+        <br/>
+        {% if request.user.is_superuser %}
+            <a href="{{instance.get_absolute_url}}edit">Edit</a> 
+            <a href="{{instance.get_absolute_url}}delete">Delete</a>
+        {% endif %}
+    </div>
+    <hr/>
+
+{% endblock %}

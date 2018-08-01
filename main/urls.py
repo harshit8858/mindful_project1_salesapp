@@ -12,4 +12,8 @@ urlpatterns = [
     url(r'^invalid/', invalid, name='invalid'),
     url(r'^customer/', customer, name='customer'),
     url(r'^customer_list/', customer_list, name='customer_list'),
+    url(r'^(?P<slug>[\w-]+)/$', user_details, name='user_details'),
+    url(r'^(?P<slug>[\w-]+)/edit/', edit_user, name='edit_user'),
+    url(r'^(?P<slug>[\w-]+)/delete/', delete_user, name='delete_user'),
+
 ]

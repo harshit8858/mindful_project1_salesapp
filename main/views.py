@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 from .forms import *
 from .models import *
@@ -22,6 +23,15 @@ def user(request):
     else:
         return render(request, 'main/user.html')
 
+
+def user_details(request, slug):
+    instance = get_object_or_404(Profile, slug=slug)
+    context = {
+        'instance': instance
+    }
+    return render(request, 'main/user_details.html', context)
+
+
 def signup(request):
     if request.user.is_superuser:
         if request.method == 'POST':
@@ -36,12 +46,43 @@ def signup(request):
                 f.profile.last_name = form.cleaned_data.get('last_name')
                 f.profile.mobile = form.cleaned_data.get('mobile')
                 f.save()
-                return redirect('main:user')
+                # return redirect('main:user')
+                return HttpResponseRedirect(f.profile.get_absolute_url())
         else:
             form = SignUpForm()
         return render(request, 'main/signup.html', {'form': form})
     else:
         return render(request, 'main/not_authorised.html')
+
+
+def edit_user(request, slug):
+    instance = get_object_or_404(Profile, slug=slug)
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = EditUserForm(request.POST, instance=instance)
+            if form.is_valid():
+                f = form.save()
+                f.refresh_from_db()  # load the profile instance created by the signal
+                f.user_type = form.cleaned_data.get('user_type')
+                f.sale_admin = str(form.cleaned_data.get('sale_admin'))
+                f.sale_manager = str(form.cleaned_data.get('sale_manager'))
+                f.first_name = form.cleaned_data.get('first_name')
+                f.last_name = form.cleaned_data.get('last_name')
+                f.mobile = form.cleaned_data.get('mobile')
+                f.save()
+                # return redirect('main:user')
+                return HttpResponseRedirect(f.get_absolute_url())
+        else:
+            form = EditUserForm(instance=instance)
+        return render(request, 'main/signup.html', {'form': form})
+    else:
+        return render(request, 'main/not_authorised.html')
+
+
+def delete_user(request, slug):
+    instance = get_object_or_404(Profile, slug=slug)
+    instance.delete()
+    return redirect('main:user')
 
 
 def login(request):
