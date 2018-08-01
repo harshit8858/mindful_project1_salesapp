@@ -7,19 +7,19 @@
 
     <br/>
     {% if request.user.profile.user_type == 'salesadmin' %}
-        {{ request.user}}<span style="color:grey">(salesadmin)</span>
+        {{ request.user}}<span style="color:grey"></span>
         <ul>
             {% for i in admin %}
                 {% if i.user.username == request.user.username %}
                     {% for j in manager %}
                         {% if j.sale_admin == i.user.username %}
                             <li>
-                                {{j}} <span style="color:grey">(salesmanager)</span>
+                                {{j}} <span style="color:grey"></span>
                                 <ul>
                                     {% for k in men %}
                                         {% if k.sale_manager == j.user.username %}
                                             <li>
-                                                {{k}} <span style="color:grey">(salesmen)</span>
+                                                {{k}} <span style="color:grey"></span>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
@@ -31,14 +31,14 @@
             {% endfor %}
         </ul>
     {% elif request.user.profile.user_type == 'salesmanager' %}
-        {{ request.user}} <span style="color:grey">(salesmanager)</span> <br/>
+        {{ request.user}} <span style="color:grey"></span> <br/>
         <ul>
             {% for j in manager %}
                 {% if j.user.username == request.user.username %}
                     {% for k in men %}
                         {% if k.sale_manager == j.user.username %}
                             <li>
-                                {{k}} <span style="color:grey">(salesmen)</span>
+                                {{k}} <span style="color:grey"></span>
                             </li>
                         {% endif %}
                     {% endfor %}
@@ -46,7 +46,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        {{request.user}} <span style="color:grey">(salesmen)</span> <br/>
+        {{request.user}} <span style="color:grey"></span> <br/>
     {% endif %}
 
 {% endblock %}
