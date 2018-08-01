@@ -3,14 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
-
-
-class Category(models.Model):
-    category = models.CharField(max_length=100, unique=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-
-    def __str__(self):
-        return self.category
+from .models1 import *
 
 
 class Product(models.Model):

@@ -1,19 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}<br/>
-            {% if field.help_text %}
-                <small style="color: grey">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-                <p style="color: red">{{ error }}</p>
-            {% endfor %}
+    <hr/>
+    <div class="container">
+        {% for pro in product %}
+            <a href="{{pro.get_absolute_url}}" class="btn btn-default">{{ pro.name }}</a><hr/>
         {% endfor %}
-        <button type="submit">Create</button>
-    </form>
+    </div>
 
 {% endblock %}

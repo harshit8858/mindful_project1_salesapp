@@ -82,25 +82,33 @@
 <body>
     <div class="sidenav">
         <a href="{% url 'main:index' %}">Home</a>
-        <button class="dropdown-btn">User
+        <button class="dropdown-btn">Users
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'main:user' %}">User</a>
-            <a href="{% url 'main:signup' %}">Signup</a>
-            {% if request.user.is_superuser %}
-                <a href="{% url 'main:customer' %}">New Customer</a>
-                <a href="{% url 'main:customer_list' %}">Customer List</a>
-            {% endif %}
+            <a href="{% url 'main:user' %}">All-Users</a>
+            <a href="{% url 'main:signup' %}">Create-User</a>
         </div>
-        <button class="dropdown-btn">Product
+        {% if request.user.is_superuser %}
+            <button class="dropdown-btn">Customers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                    <a href="{% url 'main:customer' %}">All-Customer</a>
+                    <a href="{% url 'main:customer_list' %}">Create-Customer</a>
+            </div>
+        {% endif %}
+        <button class="dropdown-btn">Products
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'product:index' %}">Product</a>
+            <a href="{% url 'product:product' %}">All-Product</a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'product:category' %}">New Category</a>
-                <a href="{% url 'product:product' %}">New Product</a>
+                <a href="{% url 'product:add_product' %}">Add-Product</a>
+            {% endif %}
+            <a href="{% url 'product:category' %}">All-Category</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'product:add_category' %}">Add-Category</a>
             {% endif %}
         </div>
         {% if user.is_authenticated %}

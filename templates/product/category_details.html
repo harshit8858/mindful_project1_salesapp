@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="container">
+        <center>
+            <h2>
+                {{ instance.category }}
+            </h2>
+        </center>
+        <br/>
+        {% for pro in product %}
+            {% if pro.category.category == instance.category %}
+                <a href="{{pro.get_absolute_url}}" class="btn btn-default">{{pro.name}}</a><hr/>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
