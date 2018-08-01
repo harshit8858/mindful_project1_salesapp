@@ -3,17 +3,24 @@
 
 
     <div class="container">
-        <center>
-            <h2>
-                {{ instance.category }}
-            </h2>
-        </center>
-        <br/>
+        <div>
+            <center>
+                <h2>
+                    {{ instance.category }}
+                </h2>
+            </center>
+            <div align="right">
+                {% if instance.created_by == request.user %}
+                    <a href="{{instance.get_absolute_url1}}edit" class="btn btn-info">Edit Category Name</a>
+                {% endif %}
+            </div>
+        </div>
+        <hr/>
         {% for pro in product %}
             {% if pro.category.category == instance.category %}
                 <a href="{{pro.get_absolute_url}}" class="btn btn-default">{{pro.name}}</a><hr/>
             {% endif %}
         {% endfor %}
-    </div>
+        </div>
 
 {% endblock %}

@@ -84,9 +84,15 @@ def product_edit(request, slug):
         'form': form,
     }
     if request.user.is_superuser:
-        return render(request, 'product/product.html', context)
+        return render(request, 'product/add_product.html', context)
     else:
         return render(request, 'main/not_authorised.html')
+
+
+def product_delete(request, slug):
+    instance = get_object_or_404(Product, slug=slug)
+    instance.delete()
+    return redirect('product:product')
 
 
 def category_detail(request, slug1):
@@ -102,7 +108,7 @@ def category_detail(request, slug1):
 def category_edit(request, slug1):
     instance = get_object_or_404(Category, slug1=slug1)
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=instance)
+        form = CategoryForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             f = form.save(commit=False)
             f.created_by = request.user
@@ -115,6 +121,12 @@ def category_edit(request, slug1):
         'form': form,
     }
     if request.user.is_superuser:
-        return render(request, 'product/category.html', context)
+        return render(request, 'product/add_category.html', context)
     else:
         return render(request, 'main/not_authorised.html')
+
+
+# def category_delete(request, slug1):
+#     instance = get_object_or_404(Category, slug1=slug1)
+#     instance.delete()
+#     return redirect('product:category')
