@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from .forms import *
 from .models import *
+from .models1 import *
 
 
 def index(request):
@@ -121,7 +122,8 @@ def customer(request):
                 f = form.save(commit=False)
                 f.sale_manager = str(form.cleaned_data.get('sale_manager'))
                 f.save()
-                return redirect('main:customer_list')
+                # return redirect('main:customer_list')
+                return HttpResponseRedirect(f.get_absolute_url1())
         else:
             form = CustomerForm()
         return render(request, 'main/customer.html', {'form':form})
@@ -137,3 +139,36 @@ def customer_list(request):
         'customer': customer,
     }
     return render(request, 'main/customer_list.html', context)
+
+
+def customer_details(request, slug1):
+    instance = get_object_or_404(Customer, slug1=slug1)
+    context = {
+        'instance': instance,
+    }
+    return render(request, 'main/customer_details.html', context)
+
+
+def edit_customer(request, slug1):
+    instance = get_object_or_404(Customer, slug1=slug1)
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = CustomerForm(request.POST,instance=instance)
+            if form.is_valid():
+                f = form.save(commit=False)
+                f.sale_manager = str(form.cleaned_data.get('sale_manager'))
+                f.save()
+                # return redirect('main:customer_list')
+                return HttpResponseRedirect(f.get_absolute_url1())
+        else:
+            form = CustomerForm(instance=instance)
+        return render(request, 'main/customer.html', {'form':form})
+    else:
+        return render(request, 'main/not_authorised.html')
+
+
+def delete_customer(request, slug1):
+    instance = get_object_or_404(Customer, slug1=slug1)
+    instance.delete()
+    return redirect('main:customer_list')
+

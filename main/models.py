@@ -53,13 +53,3 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
-
-
-class Customer(models.Model):
-    name = models.CharField(max_length=100)
-    sale_manager = models.CharField(max_length=20)
-    address = models.TextField(max_length=500)
-    mobile = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.name

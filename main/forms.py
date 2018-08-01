@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField
 from .models import *
+from .models1 import *
 
 
 USER_TYPE = (

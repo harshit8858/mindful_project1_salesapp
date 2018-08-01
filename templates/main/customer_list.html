@@ -5,12 +5,16 @@
     {% for sm in sale_manager %}
         <ul>
             <li>
-            {{sm}} <span style="color:grey">(salesmanager)</span>
+            <a href="{{sm.get_absolute_url}}">
+                {{sm}} <span style="color:grey"></span>
+            </a>
             {% for cust in customer %}
                 <ul>
                     {% if cust.sale_manager == sm.user.username %}
                         <li>
-                            {{cust}} <span style="color:grey">(customer)</span>
+                            <a href="{{cust.get_absolute_url1}}">
+                                {{cust}} <span style="color:grey"></span>
+                            </a>
                         </li>
                     {% endif %}
                 </ul>

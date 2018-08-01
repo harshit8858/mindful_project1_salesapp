@@ -9,7 +9,7 @@
         Mobile: {{instance.mobile}}<br/>
         <br/>
         {% if request.user.is_superuser %}
-            <a href="{{instance.get_absolute_url}}edit">Edit</a> 
+            <a href="{{instance.get_absolute_url}}edit">Edit</a>
             <a href="{{instance.get_absolute_url}}delete">Delete</a>
         {% endif %}
     </div>
