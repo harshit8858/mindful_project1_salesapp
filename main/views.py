@@ -32,6 +32,9 @@ def signup(request):
                 f.profile.user_type = form.cleaned_data.get('user_type')
                 f.profile.sale_admin = str(form.cleaned_data.get('sale_admin'))
                 f.profile.sale_manager = str(form.cleaned_data.get('sale_manager'))
+                f.profile.first_name = form.cleaned_data.get('first_name')
+                f.profile.last_name = form.cleaned_data.get('last_name')
+                f.profile.mobile = form.cleaned_data.get('mobile')
                 f.save()
                 return redirect('main:user')
         else:
