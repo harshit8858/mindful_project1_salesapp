@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+    <hr/>
     <div class="container">
-        {% if request.user.is_superuser %}
-            CREATE:<br/>
-            <a href="{% url 'product:category' %}" class="btn btn-success">Category</a>
-            <a href="{% url 'product:product' %}" class="btn btn-success">Product</a>
-        {% endif %}
-        <br/><hr/>
-            {% for pro in product %}
-                <a href="{{pro.get_absolute_url}}" class="btn btn-default">{{ pro.name }}</a>
-                <a href="{% url 'order:order' %}" class="btn btn-default">Order</a><hr/>
-            {% endfor %}
+        {% for pro in product %}
+            <a href="{{pro.get_absolute_url}}" class="btn btn-default">{{ pro.name }}</a><hr/>
+        {% endfor %}
     </div>
 
 {% endblock %}

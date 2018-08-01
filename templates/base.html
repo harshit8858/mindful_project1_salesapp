@@ -93,6 +93,16 @@
                 <a href="{% url 'main:customer_list' %}">Customer List</a>
             {% endif %}
         </div>
+        <button class="dropdown-btn">Product
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'product:index' %}">Product</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'product:category' %}">New Category</a>
+                <a href="{% url 'product:product' %}">New Product</a>
+            {% endif %}
+        </div>
         {% if user.is_authenticated %}
             <a href="{% url 'main:logout' %}">Log Out</a>
         {% else %}
