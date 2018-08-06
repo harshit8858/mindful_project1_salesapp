@@ -40,3 +40,9 @@ secret
 # For people using IntelliJ Python IDE
 .idea
 .idea/*
+
+.DS_Store
+*.pyc
+build
+dist
+django_cart.egg-info

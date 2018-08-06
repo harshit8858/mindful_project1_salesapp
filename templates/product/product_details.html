@@ -14,6 +14,8 @@
         Price: {{ instance.price }}<br/>
         Active: {{ instance.status }}<br/>
         <br/>
+        <a href="{% url 'order:add_to_cart' instance.id %}">Order</a>
+        <br/>
         {% if instance.created_by == request.user %}
             <a href="{{instance.get_absolute_url}}edit" class="btn btn-info">Edit</a>
             <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">Delete</a>

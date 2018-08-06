@@ -1,9 +1,9 @@
+from .models1 import *
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
-from .models1 import *
 
 
 class Product(models.Model):
