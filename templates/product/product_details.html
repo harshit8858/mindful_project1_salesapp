@@ -6,15 +6,12 @@
         Product: {{ instance.name }}<br/>
         Category: {{ instance.category }}<br/>
         {% if instance.image %}
-            {{ instance.image.url }}
             <img src="{{ instance.image.url }}" height="100px" width="100px"><br/>
         {% else %}
             <img src="https://www.brother.ca/resources/images/no-product-image.png" height="100px" width="100px"><br/>
         {% endif %}
         Price: {{ instance.price }}<br/>
         Active: {{ instance.status }}<br/>
-        <br/>
-        <a href="{% url 'order:add_to_cart' instance.id %}">Order</a>
         <br/>
         {% if instance.created_by == request.user %}
             <a href="{{instance.get_absolute_url}}edit" class="btn btn-info">Edit</a>

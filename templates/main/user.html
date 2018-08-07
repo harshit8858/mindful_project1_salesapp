@@ -6,39 +6,33 @@
     <!--{{ men }}<br/>-->
 
     <br/>
-    {% if request.user.profile.user_type == 'salesadmin' %}
+    {% if request.user.is_superuser %}
         <a href="{{request.user.profile.get_absolute_url}}">
-            {{ request.user.profile.first_name}} {{ request.user.profile.last_name}} <span style="color:grey"></span>
+            {{ request.user.profile.first_name}} {{ request.user.profile.last_name}}
         </a>
         <ul>
-            {% for i in admin %}
-                {% if i.user.username == request.user.username %}
                     {% for j in manager %}
-                        {% if j.sale_admin == i.user.username %}
                             <li>
                                 <a href="{{j.get_absolute_url}}">
-                                    {{j.first_name}} {{j.last_name}} <span style="color:grey"></span>
+                                    {{j.first_name}} {{j.last_name}}
                                 </a>
                                 <ul>
                                     {% for k in men %}
                                         {% if k.sale_manager == j.user.username %}
                                             <li>
                                                 <a href="{{k.get_absolute_url}}">
-                                                    {{k.first_name}} {{k.last_name}} <span style="color:grey"></span>
+                                                    {{k.first_name}} {{k.last_name}}
                                                 </a>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
                             </li>
-                        {% endif %}
                     {% endfor %}
-                {% endif %}
-            {% endfor %}
         </ul>
     {% elif request.user.profile.user_type == 'salesmanager' %}
         <a href="{{request.user.profile.get_absolute_url}}">
-            {{ request.user.profile_first_name}} <span style="color:grey"></span> <br/>
+            {{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>
         </a>
         <ul>
             {% for j in manager %}
@@ -47,7 +41,7 @@
                         {% if k.sale_manager == j.user.username %}
                             <li>
                                 <a href="{{k.get_absolute_url}}">
-                                    {{k.first_name}} {{k.last_name}} <span style="color:grey"></span>
+                                    {{k.first_name}} {{k.last_name}}
                                 </a>
                             </li>
                         {% endif %}
@@ -56,7 +50,9 @@
             {% endfor %}
         </ul>
     {% else %}
-        {{request.user.profile.first_name}} <span style="color:grey"></span> <br/>
+        <a href="{{request.user.profile.get_absolute_url}}">
+            {{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>
+        </a>
     {% endif %}
 
 {% endblock %}

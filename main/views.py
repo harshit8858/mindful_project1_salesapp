@@ -12,11 +12,11 @@ def index(request):
 
 def user(request):
     if request.user.is_authenticated:
-        admin = Profile.objects.filter(user_type='salesadmin')
+        # admin = Profile.objects.filter(user_type='salesadmin')
         manager = Profile.objects.filter(user_type='salesmanager')
         men = Profile.objects.filter(user_type='salesmen')
         context = {
-            'admin': admin,
+            # 'admin': admin,
             'manager': manager,
             'men': men,
         }

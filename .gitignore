@@ -41,8 +41,5 @@ secret
 .idea
 .idea/*
 
-.DS_Store
-*.pyc
-build
-dist
-django_cart.egg-info
+migrations/
+migrations/*

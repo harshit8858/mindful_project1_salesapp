@@ -7,12 +7,11 @@ from .models1 import *
 
 
 USER_TYPE = (
-    ('salesadmin','SALES-ADMIN'),
     ('salesmanager','SALES-MANAGER'),
     ('salesmen','SALESMEN'),
 )
 
-s_admin = Profile.objects.filter(user_type='salesadmin')
+# s_admin = Profile.objects.filter(user_type='salesadmin')
 s_manager = Profile.objects.filter(user_type='salesmanager')
 
 class SignUpForm(UserCreationForm):
@@ -20,7 +19,7 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(required=True, widget=forms.TextInput())
     mobile = forms.IntegerField(required=True,widget=forms.NumberInput())
     user_type = forms.ChoiceField(choices=USER_TYPE, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
-    sale_admin = ModelChoiceField(queryset=s_admin, required=False)
+    # sale_admin = ModelChoiceField(queryset=s_admin, required=False)
     sale_manager = ModelChoiceField(queryset=s_manager, required=False)
 
     class Meta:
@@ -31,7 +30,7 @@ class SignUpForm(UserCreationForm):
             'username',
             'mobile',
             'user_type',
-            'sale_admin',
+            # 'sale_admin',
             'sale_manager',
             'password1',
             'password2',
@@ -43,7 +42,7 @@ class EditUserForm(forms.ModelForm):
     last_name = forms.CharField(required=True, widget=forms.TextInput())
     mobile = forms.IntegerField(required=True,widget=forms.NumberInput())
     user_type = forms.ChoiceField(choices=USER_TYPE, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
-    sale_admin = ModelChoiceField(queryset=s_admin, required=False)
+    # sale_admin = ModelChoiceField(queryset=s_admin, required=False)
     sale_manager = ModelChoiceField(queryset=s_manager, required=False)
 
     class Meta:
@@ -53,7 +52,7 @@ class EditUserForm(forms.ModelForm):
             'last_name',
             'mobile',
             'user_type',
-            'sale_admin',
+            # 'sale_admin',
             'sale_manager',
         )
 

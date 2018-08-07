@@ -8,7 +8,6 @@ from django.utils.text import slugify
 
 
 USER_TYPE = (
-    ('salesadmin','SALES-ADMIN'),
     ('salesmanager','SALES-MANAGER'),
     ('salesmen','SALESMEN'),
 )
@@ -17,7 +16,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=20, choices=USER_TYPE)
     slug = models.SlugField(unique=True, blank=True, null=True)
-    sale_admin = models.CharField(max_length=20, null=True, blank=True)
     sale_manager = models.CharField(max_length=20, null=True, blank=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
