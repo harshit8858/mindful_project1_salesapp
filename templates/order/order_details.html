@@ -3,6 +3,7 @@
 
 Product - {{instance.product}}<br/>
 Customer - {{instance.customer}}<br/>
-<a href="{% url 'order:order_edit' instance.id %}">Edit</a>
+<a href="{% url 'order:order_edit' instance.id %}">Edit</a>.     .
+<a href="{% url 'order:order_delete' instance.id %}">Delete</a>
 
 {% endblock %}

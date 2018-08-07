@@ -54,3 +54,9 @@ def order_edit(request, order_id):
         return render(request, 'order/new_order.html', {'form':form})
     else:
         return render(request, 'main/not_authenticated.html')
+
+
+def order_delete(request, order_id):
+    instance = Order.objects.get(id=order_id)
+    instance.delete()
+    return redirect('order:all_order')
