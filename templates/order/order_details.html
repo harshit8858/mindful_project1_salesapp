@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+
+Product - {{instance.product}}<br/>
+Customer - {{instance.customer}}<br/>
+<a href="{% url 'order:order_edit' instance.id %}">Edit</a>
+
+{% endblock %}
