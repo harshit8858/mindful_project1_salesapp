@@ -111,6 +111,13 @@
                 <a href="{% url 'product:add_category' %}">Add-Category</a>
             {% endif %}
         </div>
+        <button class="dropdown-btn">Orders
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'order:all_order' %}">All-Orders</a>
+            <a href="{% url 'order:new_order' %}">New-Order</a>
+        </div>
         {% if user.is_authenticated %}
             <a href="{% url 'main:logout' %}">Log Out</a>
         {% else %}

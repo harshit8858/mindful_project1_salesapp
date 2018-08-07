@@ -43,3 +43,6 @@ secret
 
 migrations/
 migrations/*
+
+media/
+media/*

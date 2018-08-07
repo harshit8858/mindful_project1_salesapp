@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% for o in orders %}
+        <a href="{% url 'order:order_details' o.id %}" class="btn btn-default">
+            {{ o }}
+        </a>
+        <hr/>
+    {% endfor %}
+
+{% endblock %}
