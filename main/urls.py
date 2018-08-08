@@ -12,11 +12,15 @@ urlpatterns = [
     url(r'^invalid/', invalid, name='invalid'),
     url(r'^customer/$', customer, name='customer'),
     url(r'^customer_list/', customer_list, name='customer_list'),
+    url(r'^reports/', reports, name="reports"),
+    url(r'^news_messages/', news_messages, name="news_messages"),
+    url(r'^company_profile/', company_profile, name="company_profile"),
+
     url(r'^(?P<slug>[\w-]+)/$', user_details, name='user_details'),
     url(r'^(?P<slug>[\w-]+)/edit/', edit_user, name='edit_user'),
     url(r'^(?P<slug>[\w-]+)/delete/', delete_user, name='delete_user'),
     url(r'^customer/(?P<slug1>[\w-]+)/$', customer_details, name='customer_details'),
     url(r'^customer/(?P<slug1>[\w-]+)/edit/', edit_customer, name='edit_customer'),
-    url(r'^customer/(?P<slug1>[\w-]+)/delete/', delete_customer, name='delete_customer')
+    url(r'^customer/(?P<slug1>[\w-]+)/delete/', delete_customer, name='delete_customer'),
 
 ]

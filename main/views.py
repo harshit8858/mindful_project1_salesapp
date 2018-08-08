@@ -172,3 +172,14 @@ def delete_customer(request, slug1):
     instance.delete()
     return redirect('main:customer_list')
 
+
+def reports(request):
+    return render(request, 'main/reports.html')
+
+
+def news_messages(request):
+    return render(request, 'main/news_messages.html')
+
+
+def company_profile(request):
+    return render(request, 'main/company_profile.html')
