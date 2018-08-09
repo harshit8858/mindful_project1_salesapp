@@ -182,4 +182,50 @@ def news_messages(request):
 
 
 def company_profile(request):
-    return render(request, 'main/company_profile.html')
+    cp = Company_Profile.objects.all()
+    context = {
+        'cp': cp,
+    }
+    if cp.count() == 0:
+        if request.user.is_superuser:
+            return redirect('main:company_profile_add')
+        else:
+            return render(request, 'main/no_data_found.html')
+    else:
+        return render(request, 'main/company_profile.html', context)
+
+
+def company_profile_add(requset):
+    if requset.method == 'POST':
+        form = CompanyProfileEditForm(requset.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:company_profile')
+    else:
+        form = CompanyProfileEditForm()
+    context = {
+        'form': form,
+    }
+    if requset.user.is_superuser:
+        return render(requset, 'main/company_profile_add.html', context)
+    else:
+        return render(requset, 'main/not_authorised.html')
+
+
+def company_profile_edit(requset, id):
+    instance = Company_Profile.objects.get(id=id)
+    if requset.method == 'POST':
+        form = CompanyProfileEditForm(requset.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('main:company_profile')
+    else:
+        form = CompanyProfileEditForm(instance=instance)
+    context = {
+        'form': form,
+        'instance': instance,
+    }
+    if requset.user.is_superuser:
+        return render(requset, 'main/company_profile_add.html', context)
+    else:
+        return render(requset, 'main/not_authorised.html')

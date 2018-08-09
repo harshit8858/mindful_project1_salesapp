@@ -30,7 +30,7 @@
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 12px;
-        color: #818181;
+        color: white;
         display: block;
         border: none;
         background: none;
@@ -80,6 +80,7 @@
 </head>
 
 <body>
+<b>
     <div class="sidenav">
         <a href="{% url 'main:index' %}">
             Home
@@ -139,6 +140,8 @@
         {% block content %}
         {% endblock %}
     </div>
+</b>
+
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
         var dropdown = document.getElementsByClassName("dropdown-btn");

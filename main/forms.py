@@ -68,3 +68,12 @@ class CustomerForm(forms.ModelForm):
             'address',
             'mobile',
         )
+
+
+class CompanyProfileEditForm(forms.ModelForm):
+
+    class Meta:
+        model = Company_Profile
+        exclude = {
+
+        }

@@ -51,3 +51,23 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class Company_Profile(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    pic = models.FileField(upload_to='comapany_profile', null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    phone = models.PositiveIntegerField(null=True, blank=True)
+    fax = models.CharField(max_length=100, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
+    pincode = models.PositiveIntegerField(null=True, blank=True)
+    country = models.CharField(max_length=100, null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    pan = models.CharField(max_length=100, null=True, blank=True)
+    gst = models.CharField(max_length=100, null=True, blank=True)
+    tan = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

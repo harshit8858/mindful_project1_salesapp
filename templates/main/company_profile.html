@@ -1,2 +1,119 @@
 {% extends 'base.html' %}
 
+{% block content %}
+
+    {% for cp in cp %}
+
+        <div class="panel panel-default">
+            <div class="container">
+                <div class="col-sm-6">
+                    <big><b>Profile</b></big>
+                </div>
+                <div class="col-sm-6" align="right">
+                    <a href="{% url 'main:company_profile_edit' cp.id %}" class="btn btn-primary">
+                        Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <h3><b>Profile Info</b></h3>
+        <hr/>
+        <div class="container" style="margin:0px;">
+            <div class="col-sm-3">
+                {% if cp.pic %}
+                    <img src="{{cp.pic.url}}" width="130px" height="130px" />
+                {% else %}
+                    <img src="https://i.stack.imgur.com/34AD2.jpg" width="130px" height="130px" />
+                {% endif %}
+            </div>
+            <div class="col-sm-3">
+                <b>Name</b> <br/>
+                {{cp.name}}
+                <br/><br/><br/><br/>
+                <b>Phone</b> <br/>
+                {{cp.phone}}
+                <br/>
+            </div>
+            <div class="col-sm-3">
+                <b>Website</b> <br/>
+                {{cp.website}}
+                <br/><br/><br/><br/>
+                <b>Fax</b> <br/>
+                {{cp.fax}}
+                <br/>
+            </div>
+            <div class="col-sm-3">
+                <b>Email</b> <br/>
+                {{cp.email}}
+            </div>
+        </div>
+        <br/>
+
+        <h3><b>Contact Person</b></h3>
+        <hr/>
+        <div class="container" style="margin:0px;">
+            <div class="col-sm-4">
+                <b>Contact Person Name</b> <br/>
+                {{ request.user.profile.first_name }} {{ request.user.profile.last_name }}
+            </div>
+            <div class="col-sm-4">
+                <b>Contact Person Contact Number</b> <br/>
+                {{ request.user.profile.mobile }}
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+        <br/>
+
+        <h3><b>Address Details</b></h3>
+        <hr/>
+        <div class="container" style="margin:0px;">
+            <div class="col-sm-3">
+                <b>Address</b> <br/>
+                {{cp.address}}
+                <br/><br/><br/><br/>
+                <b>City</b> <br/>
+                {{cp.city}}
+            </div>
+            <div class="col-sm-3">
+                <b>Pincode</b> <br/>
+                {{cp.pincode}}
+            </div>
+            <div class="col-sm-3">
+                <b>Country</b> <br/>
+                {{cp.country}}
+            </div>
+            <div class="col-sm-3">
+                <b>State</b> <br/>
+                {{cp.state}}
+            </div>
+        </div>
+        <br/>
+
+        <h3><b>Account Details</b></h3>
+        <hr/>
+        <div class="container" style="margin:0px;">
+            <div class="col-sm-3">
+                <b>PAN</b> <br/>
+                {{cp.pan}}
+            </div>
+            <div class="col-sm-3">
+                <b>GST</b> <br/>
+                {{cp.gst}}
+            </div>
+            <div class="col-sm-3">
+                <b>TAN</b> <br/>
+                {{cp.tan}}
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+        <br/>
+
+    {% endfor %}
+
+{% endblock %}
