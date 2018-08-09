@@ -91,7 +91,10 @@ def product_edit(request, slug):
 
 def product_delete(request, slug):
     instance = get_object_or_404(Product, slug=slug)
-    instance.delete()
+    if request.user.is_superuser:
+        instance.delete()
+    else:
+        return render(request, 'main/not_authorized.html')
     return redirect('product:product')
 
 

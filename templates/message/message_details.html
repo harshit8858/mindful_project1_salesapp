@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{instance.date}}<br/>
+{{instance.time}}<br/>
+{{instance.body}}<br/>
+{% if request.user.is_superuser %}
+    <a href="{{instance.get_absolute_url}}edit" class="btn btn-success btn-sm">
+        Edit
+    </a>. .
+    <a href="{{instance.get_absolute_url}}delete" class="btn btn-success btn-sm">
+        Delete
+    </a>
+{% endif %}
+<hr/>
+
+{% endblock %}

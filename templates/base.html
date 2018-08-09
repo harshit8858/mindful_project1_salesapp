@@ -124,9 +124,13 @@
         <a href="{% url 'main:reports' %}">
             Reports
         </a>
-        <a href="{% url 'main:news_messages' %}">
-            News & Messages
-        </a>
+        <button class="dropdown-btn">News & Messages
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'news:news' %}">News</a>
+            <a href="{% url 'message:messages' %}">Messages</a>
+        </div>
         <a href="{% url 'main:company_profile' %}">
             Comapny Profile
         </a>

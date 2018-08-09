@@ -16,7 +16,6 @@ urlpatterns = [
     url(r'^customer/$', customer, name='customer'),
     url(r'^customer_list/', customer_list, name='customer_list'),
     url(r'^reports/', reports, name="reports"),
-    url(r'^news_messages/', news_messages, name="news_messages"),
     url(r'^company_profile/$', company_profile, name="company_profile"),
     url(r'^company_profile/add/', company_profile_add, name="company_profile_add"),
     #id,slug based url below this

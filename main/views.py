@@ -82,7 +82,10 @@ def edit_user(request, slug):
 
 def delete_user(request, slug):
     instance = get_object_or_404(Profile, slug=slug)
-    instance.delete()
+    if request.user.is_superuser:
+        instance.delete()
+    else:
+        return render(request, 'main/not_authorized.html')
     return redirect('main:user')
 
 
@@ -95,6 +98,7 @@ def login(request):
 
 def auth_check(request):
     username = request.POST['username']
+    password = request.POST['password']
     password = request.POST['password']
     user = auth.authenticate(username=username,password=password)
 
@@ -169,16 +173,15 @@ def edit_customer(request, slug1):
 
 def delete_customer(request, slug1):
     instance = get_object_or_404(Customer, slug1=slug1)
-    instance.delete()
+    if request.user.is_superuser:
+        instance.delete()
+    else:
+        return render(request, 'main/not_authorized.html')
     return redirect('main:customer_list')
 
 
 def reports(request):
     return render(request, 'main/reports.html')
-
-
-def news_messages(request):
-    return render(request, 'main/news_messages.html')
 
 
 def company_profile(request):

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if request.user.is_superuser %}
+    <a href="{% url 'news:news_add' %}" class="btn btn-success">
+        Add
+    </a>
+{% endif %}
+<hr/>
+
+{% for n in news %}
+    <a href="{{n.get_absolute_url}}" class="btn btn-default">
+        {{n}}
+    </a>
+    <hr/>
+{% endfor %}
+
+{% endblock %}
