@@ -14,7 +14,7 @@ USER_TYPE = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=20, choices=USER_TYPE, blank=True, null=True)
+    user_type = models.CharField(max_length=20, choices=USER_TYPE)
     slug = models.SlugField(unique=True, blank=True, null=True)
     sale_manager = models.CharField(max_length=20, null=True, blank=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
