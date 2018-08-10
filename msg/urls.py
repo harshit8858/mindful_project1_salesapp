@@ -3,11 +3,11 @@ from .views import *
 
 
 urlpatterns = [
-    # url(r'^$', message, name='message'),
-    url(r'^messages_list/', messages, name='messages'),
-    url(r'^add_message/', message_add, name="message_add"),
+    # url(r'^$', msg, name='msg'),
+    url(r'^msg_list/', msg, name='msg'),
+    url(r'^add_msg/', msg_add, name="msg_add"),
     # id,slug based url below this
-    url(r'^(?P<slug>[\w-]+)/$', message_details, name='message_details'),
-    url(r'^(?P<slug>[\w-]+)/edit/', message_edit, name='message_edit'),
-    url(r'^(?P<slug>[\w-]+)/delete/', message_delete, name='message_delete'),
+    url(r'^(?P<slug>[\w-]+)/$', msg_details, name='msg_details'),
+    url(r'^(?P<slug>[\w-]+)/edit/', msg_edit, name='msg_edit'),
+    url(r'^(?P<slug>[\w-]+)/delete/', msg_delete, name='msg_delete'),
 ]

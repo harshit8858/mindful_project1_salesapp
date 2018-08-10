@@ -16,7 +16,7 @@ class Message(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse("message:message_details", kwargs={"slug": self.slug})
+        return reverse("msg:msg_details", kwargs={"slug": self.slug})
 
 def create_slug(instance, new_slug=None):
     slug = slugify(str(instance.user))

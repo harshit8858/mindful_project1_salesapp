@@ -58,8 +58,5 @@ def order_edit(request, order_id):
 
 def order_delete(request, order_id):
     instance = Order.objects.get(id=order_id)
-    if request.user.is_superuser:
-        instance.delete()
-    else:
-        return render(request, 'main/not_authorized.html')
+    instance.delete()
     return redirect('order:all_order')

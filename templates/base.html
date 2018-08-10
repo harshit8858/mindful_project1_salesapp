@@ -79,7 +79,7 @@
     </style>
 </head>
 
-<body>
+<body >
 <b>
     <div class="sidenav">
         <a href="{% url 'main:index' %}">
@@ -129,8 +129,7 @@
         </button>
         <div class="dropdown-container">
             <a href="{% url 'news:news' %}">News</a>
-            <a href="{% url 'message:messages' %}">Messages</a>
-            <!--<a href="#">Messages</a>-->
+            <a href="{% url 'msg:msg' %}">Messages</a>
         </div>
         <a href="{% url 'main:company_profile' %}">
             Comapny Profile
@@ -146,7 +145,6 @@
         {% endblock %}
     </div>
 </b>
-
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
         var dropdown = document.getElementsByClassName("dropdown-btn");

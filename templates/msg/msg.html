@@ -3,13 +3,12 @@
 {% block content %}
 
 {% if request.user.is_superuser %}
-    <a href="{% url 'message:message_add' %}" class="btn btn-success btn-sm">
+    <a href="{% url 'msg:msg_add' %}" class="btn btn-success btn-sm">
         Add
     </a>
 {% endif %}
 <hr/>
-
-{% for m in message %}
+{% for m in msg %}
     <a href="{{m.get_absolute_url}}" class="btn btn-default">
         {{m}}
     </a>
