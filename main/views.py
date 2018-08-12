@@ -19,6 +19,7 @@ def user(request):
             # 'admin': admin,
             'manager': manager,
             'men': men,
+            'active10': 'active',
         }
         return render(request, 'main/user.html', context)
     else:
@@ -28,7 +29,8 @@ def user(request):
 def user_details(request, slug):
     instance = get_object_or_404(Profile, slug=slug)
     context = {
-        'instance': instance
+        'instance': instance,
+        'active10': 'active',
     }
     return render(request, 'main/user_details.html', context)
 
@@ -51,7 +53,11 @@ def signup(request):
                 return HttpResponseRedirect(f.profile.get_absolute_url())
         else:
             form = SignUpForm()
-        return render(request, 'main/signup.html', {'form': form})
+        context = {
+            'form': form,
+            'active10': 'active',
+        }
+        return render(request, 'main/signup.html', context)
     else:
         return render(request, 'main/not_authorised.html')
 
@@ -75,7 +81,11 @@ def edit_user(request, slug):
                 return HttpResponseRedirect(f.get_absolute_url())
         else:
             form = EditUserForm(instance=instance)
-        return render(request, 'main/signup.html', {'form': form})
+        context = {
+            'form': form,
+            'active10': 'active',
+        }
+        return render(request, 'main/signup.html', context)
     else:
         return render(request, 'main/not_authorised.html')
 
@@ -126,7 +136,11 @@ def customer(request):
                 return HttpResponseRedirect(f.get_absolute_url1())
         else:
             form = CustomerForm()
-        return render(request, 'main/customer.html', {'form':form})
+        context = {
+            'form': form,
+            'active5': 'active',
+        }
+        return render(request, 'main/customer.html', context)
     else:
         return render(request, 'main/not_authorised.html')
 
@@ -137,6 +151,7 @@ def customer_list(request):
     context = {
         'sale_manager': sale_manager,
         'customer': customer,
+        'active5': 'active',
     }
     return render(request, 'main/customer_list.html', context)
 
@@ -145,6 +160,7 @@ def customer_details(request, slug1):
     instance = get_object_or_404(Customer, slug1=slug1)
     context = {
         'instance': instance,
+        'active5': 'active',
     }
     return render(request, 'main/customer_details.html', context)
 
@@ -162,7 +178,11 @@ def edit_customer(request, slug1):
                 return HttpResponseRedirect(f.get_absolute_url1())
         else:
             form = CustomerForm(instance=instance)
-        return render(request, 'main/customer.html', {'form':form})
+        context = {
+            'form': form,
+            'active5': 'active',
+        }
+        return render(request, 'main/customer.html', context)
     else:
         return render(request, 'main/not_authorised.html')
 
@@ -174,7 +194,10 @@ def delete_customer(request, slug1):
 
 
 def reports(request):
-    return render(request, 'main/reports.html')
+    context = {
+        'active9': 'active',
+    }
+    return render(request, 'main/reports.html', context)
 
 
 def news_messages(request):
@@ -185,6 +208,7 @@ def company_profile(request):
     cp = Company_Profile.objects.all()
     context = {
         'cp': cp,
+        'active11': 'active',
     }
     if cp.count() == 0:
         if request.user.is_superuser:
@@ -205,6 +229,7 @@ def company_profile_add(requset):
         form = CompanyProfileEditForm()
     context = {
         'form': form,
+        'active11': 'active',
     }
     if requset.user.is_superuser:
         return render(requset, 'main/company_profile_add.html', context)
@@ -224,6 +249,7 @@ def company_profile_edit(requset, id):
     context = {
         'form': form,
         'instance': instance,
+        'active11': 'active',
     }
     if requset.user.is_superuser:
         return render(requset, 'main/company_profile_add.html', context)

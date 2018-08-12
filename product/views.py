@@ -9,7 +9,8 @@ from .models2 import *
 def category(request):
     category = Category.objects.all()
     context = {
-        'category': category
+        'category': category,
+        'active4': 'active',
     }
     return render(request, 'product/category.html', context)
 
@@ -17,7 +18,8 @@ def category(request):
 def product(request):
     product = Product.objects.all()
     context = {
-        'product': product
+        'product': product,
+        'active4': 'active',
     }
     return render(request, 'product/product.html', context)
 
@@ -25,7 +27,8 @@ def product(request):
 def price_category(request):
     price = PriceCategory.objects.all()
     context = {
-        'price': price
+        'price': price,
+        'active4': 'active',
     }
     return render(request, 'product/price_category.html', context)
 
@@ -42,6 +45,7 @@ def add_category(request):
         form = CategoryForm()
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_category.html', context)
@@ -62,6 +66,7 @@ def add_product(request):
         form = ProductForm()
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_product.html', context)
@@ -82,6 +87,7 @@ def add_price_category(request):
         form = PriceCategoryForm()
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_price_category.html', context)
@@ -94,7 +100,8 @@ def category_detail(request, slug1):
     product =  Product.objects.all()
     context = {
         'instance': instance,
-        'product': product
+        'product': product,
+        'active4': 'active',
     }
     return render(request, 'product/category_details.html', context)
 
@@ -113,6 +120,7 @@ def category_edit(request, slug1):
         form = CategoryForm(instance=instance)
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_category.html', context)
@@ -129,7 +137,8 @@ def category_edit(request, slug1):
 def product_detail(request, slug):
     instance = get_object_or_404(Product, slug=slug)
     context = {
-        'instance': instance
+        'instance': instance,
+        'active4': 'active',
     }
     return render(request, 'product/product_details.html', context)
 
@@ -148,6 +157,7 @@ def product_edit(request, slug):
         form = ProductForm(instance=instance)
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_product.html', context)
@@ -166,7 +176,8 @@ def price_category_detail(request, slug2):
     product =  Product.objects.all()
     context = {
         'instance': instance,
-        'product': product
+        'product': product,
+        'active4': 'active',
     }
     return render(request, 'product/price_category_details.html', context)
 
@@ -185,6 +196,7 @@ def price_category_edit(request, slug2):
         form = PriceCategoryForm(instance=instance)
     context = {
         'form': form,
+        'active4': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_price_category.html', context)

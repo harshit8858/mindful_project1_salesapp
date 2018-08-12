@@ -9,6 +9,7 @@ def news(request):
     news = News.objects.all()
     context = {
         'news': news,
+        'active3': 'active',
     }
     return render(request, 'news/news.html', context)
 
@@ -23,7 +24,8 @@ def news_add(request):
     else:
         form = NewsForm()
     context = {
-        'form': form
+        'form': form,
+        'active2': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'news/news_add.html', context)
@@ -35,6 +37,7 @@ def news_details(request, slug):
     instance = get_object_or_404(News, slug=slug)
     context = {
         'instance': instance,
+        'active2': 'active',
     }
     return render(request, 'news/news_details.html', context)
 
@@ -50,7 +53,8 @@ def news_edit(request, slug):
     else:
         form = NewsForm(instance=instance)
     context = {
-        'form': form
+        'form': form,
+        'active2': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'news/news_add.html', context)

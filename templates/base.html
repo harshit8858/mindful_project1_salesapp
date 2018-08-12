@@ -172,6 +172,9 @@
 		display: inline-block;
 		margin: 100px auto;
 	}
+	.active {
+	    background: green;
+	}
 </style>
 
 
@@ -181,25 +184,25 @@
 <body >
 <b>
     <div class="sidenav">
-        <a href="{% url 'main:reports' %}">
-            <span class="glyphicon glyphicon-dashboard">
+        <a href="{% url 'main:reports' %}" class="{{active1}}">
+            <i class="glyphicon glyphicon-dashboard">
                 Dashboard
-            </span>
+            </i>
         </a>
-        <a href="{% url 'news:news' %}">
-            <span class="glyphicon glyphicon-bullhorn">
+        <a href="{% url 'news:news' %}" class="active">
+            <i class="glyphicon glyphicon-bullhorn">
                 News
-            </span>
+            </i>
         </a>
-        <a href="{% url 'msg:msg' %}">
-            <span class="glyphicon glyphicon-envelope">
+        <a href="{% url 'msg:msg' %}" class="{{active3}}">
+            <i class="glyphicon glyphicon-envelope">
                 Message
-            </span>
+            </i>
         </a>
-        <button class="dropdown-btn">
-            <span class="glyphicon glyphicon-gift">
+        <button class="dropdown-btn {{active4}}">
+            <i class="glyphicon glyphicon-gift">
                 Products
-            </span>
+            </i>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
@@ -217,10 +220,10 @@
             {% endif %}
         </div>
         {% if request.user.is_superuser %}
-            <button class="dropdown-btn">
-                <span class="glyphicon glyphicon-user">
+            <button class="dropdown-btn {{active5}}">
+                <i class="glyphicon glyphicon-user">
                     Customers
-                </span>
+                </i>
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
@@ -229,10 +232,10 @@
             </div>
         {% endif %}
     <br/>
-        <button class="dropdown-btn">
-            <span class="glyphicon glyphicon-shopping-cart">
-                Customers
-            </span>
+        <button class="dropdown-btn {{active6}}">
+            <i class="glyphicon glyphicon-shopping-cart">
+                Order
+            </i>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
@@ -241,52 +244,51 @@
                 <a href="{% url 'order:new_order' %}">New-Order</a>
             {% endif %}
         </div>
-        <a href="{% url 'main:reports' %}">
-            <span class="glyphicon glyphicon-credit-card">
+        <a href="{% url 'main:reports' %}" class="{{active7}}">
+            <i class="glyphicon glyphicon-credit-card">
                 Payments
-            </span>
+            </i>
         </a>
     <br/>
-        <a href="{% url 'main:reports' %}">
-            <span class="glyphicon glyphicon-map-marker">
-                Location Tracking
-            </span>
+        <a href="{% url 'main:reports' %}" class="{{active8}}">
+            <i class="glyphicon glyphicon-map-marker">
+                Location-Tracking
+            </i>
         </a>
     <br/>
-
-        <a href="{% url 'main:reports' %}">
-            <span class="glyphicon glyphicon-stats">
+        <a href="{% url 'main:reports' %}" class="{{active9}}">
+            <i class="glyphicon glyphicon-stats">
                 Reports
-            </span>
+            </i>
         </a>
     <br/>
-        <button class="dropdown-btn">
-            <span class="glyphicon glyphicon-user">
+        <button class="dropdown-btn {{active10}}">
+            <i class="glyphicon glyphicon-user">
                 Users
-            </span>
+            </i>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
             <a href="{% url 'main:user' %}">All-Users</a>
             <a href="{% url 'main:signup' %}">Create-User</a>
         </div>
-        <a href="{% url 'main:company_profile' %}">
-            <span class="glyphicon glyphicon-briefcase">
+        <a href="{% url 'main:company_profile' %}" class="{{active11}}">
+            <i class="glyphicon glyphicon-briefcase">
                 Comapny-Profile
-            </span>
+            </i>
         </a>
     <br/>
         {% if user.is_authenticated %}
             <a href="{% url 'main:logout' %}">
-                <span class="glyphicon glyphicon-log-out">
-                    Log Out
-                </span>
+                <i class="glyphicon glyphicon-log-out">
+                    Log-Out
+                </i>
             </a>
         {% else %}
             <a href="{% url 'main:login' %}">
-                <span class="glyphicon glyphicon-log-in">
-                    Log In
-                </span>
+                <i class="glyphicon glyphicon-log-in">
+                    Log-In
+                </i>
             </a>
         {% endif %}
     </div>

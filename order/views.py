@@ -14,8 +14,12 @@ def new_order(request):
             # return HttpResponseRedirect('')
     else:
         form = OrderForm()
+    context = {
+        'form': form,
+        'active6': 'active',
+    }
     if request.user.is_superuser:
-        return render(request, 'order/new_order.html', {'form':form})
+        return render(request, 'order/new_order.html', context)
     else:
         return render(request, 'main/not_authenticated.html')
 
@@ -24,6 +28,7 @@ def all_order(request):
     order = Order.objects.all()
     context = {
         'order': order,
+        'active6': 'active',
     }
     return render(request, 'order/all_order.html', context)
 
@@ -32,6 +37,7 @@ def order_details(request, order_id):
     instance = Order.objects.get(id=order_id)
     context = {
         'instance': instance,
+        'active6': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'order/order_details.html', context)
@@ -50,8 +56,12 @@ def order_edit(request, order_id):
             # return HttpResponseRedirect('')
     else:
         form = OrderForm(instance=instance)
+    context = {
+        'form': form,
+        'active6': 'active',
+    }
     if request.user.is_superuser:
-        return render(request, 'order/new_order.html', {'form':form})
+        return render(request, 'order/new_order.html', context)
     else:
         return render(request, 'main/not_authenticated.html')
 

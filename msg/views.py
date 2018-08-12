@@ -9,6 +9,7 @@ def msg(request):
     msg = Message.objects.all()
     context = {
         'msg': msg,
+        'active3': 'active',
     }
     return render(request, 'msg/msg.html', context)
 
@@ -23,7 +24,8 @@ def msg_add(request):
     else:
         form = MessageForm()
     context = {
-        'form': form
+        'form': form,
+        'active3': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'msg/msg_add.html', context)
@@ -35,6 +37,7 @@ def msg_details(request, slug):
     instance = get_object_or_404(Message, slug=slug)
     context = {
         'instance': instance,
+        'active3': 'active',
     }
     return render(request, 'msg/msg_details.html', context)
 
@@ -50,7 +53,8 @@ def msg_edit(request, slug):
     else:
         form = MessageForm(instance=instance)
     context = {
-        'form': form
+        'form': form,
+        'active3': 'active',
     }
     if request.user.is_superuser:
         return render(request, 'msg/msg_add.html', context)
