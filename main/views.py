@@ -177,10 +177,6 @@ def reports(request):
     return render(request, 'main/reports.html')
 
 
-def news_messages(request):
-    return render(request, 'main/news_messages.html')
-
-
 def company_profile(request):
     cp = Company_Profile.objects.all()
     context = {

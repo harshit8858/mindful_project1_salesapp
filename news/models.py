@@ -10,17 +10,17 @@ from django.utils.text import slugify
 class News(models.Model):
     date = models.DateField(help_text='YYYY-MM-DD')
     slug = models.SlugField(unique=True)
-    time = models.TimeField(help_text='HH:MM')
+    title = models.CharField(max_length=1000, blank=True, null=True)
     body = models.TextField()
 
     def __str__(self):
-        return str(self.date)
+        return str(self.title)
 
     def get_absolute_url(self):
         return reverse("news:news_details", kwargs={"slug" : self.slug})
 
 def create_slug(instance, new_slug=None):
-    slug = slugify(str(instance.date))
+    slug = slugify(instance.title)
 
     if new_slug is not None:
         slug = new_slug
