@@ -200,8 +200,26 @@ def reports(request):
     return render(request, 'main/reports.html', context)
 
 
-def news_messages(request):
-    return render(request, 'main/news_messages.html')
+def dashboard(request):
+    context = {
+        'active1': 'active',
+    }
+    return render(request, 'main/dashboard.html', context)
+
+
+def location_tracking(request):
+    context = {
+        'active8': 'active',
+    }
+    return render(request, 'main/location_tracking.html', context)
+
+
+def payment(request):
+    context = {
+        'active7': 'active',
+    }
+    return render(request, 'main/payment.html', context)
+
 
 
 def company_profile(request):
