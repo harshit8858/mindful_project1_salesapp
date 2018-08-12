@@ -11,6 +11,6 @@ class NewsForm(forms.ModelForm):
         model = News
         fields = [
             'date',
-            'time',
+            'title',
             'body',
         ]

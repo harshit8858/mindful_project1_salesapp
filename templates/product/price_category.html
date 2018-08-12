@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <hr/>
+    <div class="container">
+        {% for pr in price %}
+            <a href="{{pr.get_absolute_url2}}" class="btn btn-default">{{ pr.price }}</a><hr/>
+        {% endfor %}
+    </div>
+{% endblock %}

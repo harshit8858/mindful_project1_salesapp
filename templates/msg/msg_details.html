@@ -9,10 +9,10 @@
     <a href="{{instance.get_absolute_url}}edit" class="btn btn-success btn-sm">
         Edit
     </a>
+	<a href="#myModal" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
+        Delete
+    </a>
 
-<div class="text-center">
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Delete</a>
-</div>
 
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog modal-confirm">
@@ -28,8 +28,8 @@
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                <a href="{{instance.get_absolute_url}}delete" class="btn btn-success btn-sm">
+				<a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
+                <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">
                     Delete
                 </a>
 			</div>

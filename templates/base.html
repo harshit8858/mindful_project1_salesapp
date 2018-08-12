@@ -181,18 +181,46 @@
 <body >
 <b>
     <div class="sidenav">
-        <a href="{% url 'main:index' %}">
-            Home
+        <a href="{% url 'main:reports' %}">
+            <span class="glyphicon glyphicon-dashboard">
+                Dashboard
+            </span>
         </a>
-        <button class="dropdown-btn">Users
+        <a href="{% url 'news:news' %}">
+            <span class="glyphicon glyphicon-bullhorn">
+                News
+            </span>
+        </a>
+        <a href="{% url 'msg:msg' %}">
+            <span class="glyphicon glyphicon-envelope">
+                Message
+            </span>
+        </a>
+        <button class="dropdown-btn">
+            <span class="glyphicon glyphicon-gift">
+                Products
+            </span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'main:user' %}">All-Users</a>
-            <a href="{% url 'main:signup' %}">Create-User</a>
+            <a href="{% url 'product:product' %}">All Product</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'product:add_product' %}">Add Product</a>
+            {% endif %}
+            <a href="{% url 'product:category' %}">All Category</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'product:add_category' %}">Add Category</a>
+            {% endif %}
+            <a href="{% url 'product:price_category' %}">All Price Category</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'product:add_price_category' %}">Add Price Category</a>
+            {% endif %}
         </div>
         {% if request.user.is_superuser %}
-            <button class="dropdown-btn">Customers
+            <button class="dropdown-btn">
+                <span class="glyphicon glyphicon-user">
+                    Customers
+                </span>
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
@@ -200,43 +228,66 @@
                 <a href="{% url 'main:customer' %}">Create-Customer</a>
             </div>
         {% endif %}
-        <button class="dropdown-btn">Products
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="{% url 'product:product' %}">All-Product</a>
-            {% if request.user.is_superuser %}
-                <a href="{% url 'product:add_product' %}">Add-Product</a>
-            {% endif %}
-            <a href="{% url 'product:category' %}">All-Category</a>
-            {% if request.user.is_superuser %}
-                <a href="{% url 'product:add_category' %}">Add-Category</a>
-            {% endif %}
-        </div>
-        <button class="dropdown-btn">Orders
+    <br/>
+        <button class="dropdown-btn">
+            <span class="glyphicon glyphicon-shopping-cart">
+                Customers
+            </span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
             <a href="{% url 'order:all_order' %}">All-Orders</a>
-            <a href="{% url 'order:new_order' %}">New-Order</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'order:new_order' %}">New-Order</a>
+            {% endif %}
         </div>
         <a href="{% url 'main:reports' %}">
-            Reports
+            <span class="glyphicon glyphicon-credit-card">
+                Payments
+            </span>
         </a>
-        <button class="dropdown-btn">News & Messages
+    <br/>
+        <a href="{% url 'main:reports' %}">
+            <span class="glyphicon glyphicon-map-marker">
+                Location Tracking
+            </span>
+        </a>
+    <br/>
+
+        <a href="{% url 'main:reports' %}">
+            <span class="glyphicon glyphicon-stats">
+                Reports
+            </span>
+        </a>
+    <br/>
+        <button class="dropdown-btn">
+            <span class="glyphicon glyphicon-user">
+                Users
+            </span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'news:news' %}">News</a>
-            <a href="{% url 'msg:msg' %}">Messages</a>
+            <a href="{% url 'main:user' %}">All-Users</a>
+            <a href="{% url 'main:signup' %}">Create-User</a>
         </div>
         <a href="{% url 'main:company_profile' %}">
-            Comapny Profile
+            <span class="glyphicon glyphicon-briefcase">
+                Comapny-Profile
+            </span>
         </a>
+    <br/>
         {% if user.is_authenticated %}
-            <a href="{% url 'main:logout' %}">Log Out</a>
+            <a href="{% url 'main:logout' %}">
+                <span class="glyphicon glyphicon-log-out">
+                    Log Out
+                </span>
+            </a>
         {% else %}
-            <a href="{% url 'main:login' %}">Log In</a>
+            <a href="{% url 'main:login' %}">
+                <span class="glyphicon glyphicon-log-in">
+                    Log In
+                </span>
+            </a>
         {% endif %}
     </div>
     <div class="main">

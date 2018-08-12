@@ -1,5 +1,7 @@
 from django import forms
 from .models import *
+from .models1 import *
+from .models2 import *
 
 
 class CategoryForm(forms.ModelForm):
@@ -19,4 +21,12 @@ class ProductForm(forms.ModelForm):
             'price',
             'image',
             'status',
+        ]
+
+
+class PriceCategoryForm(forms.ModelForm):
+    class Meta:
+        model = PriceCategory
+        fields = [
+            'price',
         ]
