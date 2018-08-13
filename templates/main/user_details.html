@@ -6,10 +6,21 @@
     <div class="container">
         Username: {{instance}}<br/>
         Name: {{instance.first_name}} {{instance.last_name}}<br/>
-        Mobile: {{instance.mobile}}<br/>
+        Email: {{instance.email}}<br/>
+        Address: {{instance.address}}<br/>
+        City: {{instance.city}}<br/>
+        State: {{instance.state}}<br/>
+        Country: {{instance.country}}<br/>
+        Status: {{instance.status}}<br/>
+        User Role: {{instance.user_type}}<br/>
+        {% if instance.profile_pic %}
+            <img src="{{ instance.profile_pic.url }}" height="100px" width="100px"><br/>
+        {% else %}
+            <img src="https://i.stack.imgur.com/34AD2.jpg" height="100px" width="100px"><br/>
+        {% endif %}
         <br/>
         {% if request.user.is_superuser %}
-            <a href="{{instance.get_absolute_url}}edit">Edit</a>
+            <a href="{{instance.get_absolute_url}}edit" class="btn btn-info">Edit</a>
 
             <a href="#myModal" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
                 Delete

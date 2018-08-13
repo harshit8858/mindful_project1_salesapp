@@ -12,6 +12,11 @@ USER_TYPE = (
     ('salesmen','SALESMEN'),
 )
 
+STATUS = (
+    ('active','ACTIVE'),
+    ('inactive','INACTIVE'),
+)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=20, choices=USER_TYPE, null=True, blank=True, default='salesmanager')
@@ -19,7 +24,14 @@ class Profile(models.Model):
     sale_manager = models.CharField(max_length=20, null=True, blank=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
-    mobile = models.PositiveIntegerField(null=True, blank=True)
+    email = models.EmailField(blank=True, null=True)
+    status = models.CharField(max_length=100, choices=STATUS, default='active')
+    address = models.CharField(max_length=1000, blank=True, null=True)
+    pincode = models.PositiveIntegerField(blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    profile_pic = models.FileField(upload_to='profile/profile_pic', blank=True, null=True)
 
     def __str__(self):
         return str(self.user)

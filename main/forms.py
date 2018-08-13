@@ -11,24 +11,43 @@ USER_TYPE = (
     ('salesmen','SALESMEN'),
 )
 
+STATUS = (
+    ('active','ACTIVE'),
+    ('inactive','INACTIVE'),
+)
+
 # s_admin = Profile.objects.filter(user_type='salesadmin')
 s_manager = Profile.objects.filter(user_type='salesmanager')
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True, widget=forms.TextInput())
     last_name = forms.CharField(required=True, widget=forms.TextInput())
-    mobile = forms.IntegerField(required=True,widget=forms.NumberInput())
+    address = forms.CharField(required=True, widget=forms.TextInput())
+    state = forms.CharField(required=True, widget=forms.TextInput())
+    city = forms.CharField(required=True, widget=forms.TextInput())
+    country = forms.CharField(required=True, widget=forms.TextInput())
+    pincode = forms.IntegerField(required=True,widget=forms.NumberInput())
     user_type = forms.ChoiceField(choices=USER_TYPE, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
     # sale_admin = ModelChoiceField(queryset=s_admin, required=False)
     sale_manager = ModelChoiceField(queryset=s_manager, required=False)
+    status = forms.ChoiceField(choices=STATUS, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput())
+    profile_pic = forms.FileField()
 
     class Meta:
         model = User
         fields = (
             'first_name',
             'last_name',
+            'profile_pic',
             'username',
-            'mobile',
+            'status',
+            'email',
+            'address',
+            'state',
+            'pincode',
+            'city',
+            'country',
             'user_type',
             # 'sale_admin',
             'sale_manager',
@@ -40,17 +59,31 @@ class SignUpForm(UserCreationForm):
 class EditUserForm(forms.ModelForm):
     first_name = forms.CharField(required=True, widget=forms.TextInput())
     last_name = forms.CharField(required=True, widget=forms.TextInput())
-    mobile = forms.IntegerField(required=True,widget=forms.NumberInput())
+    address = forms.CharField(required=True, widget=forms.TextInput())
+    state = forms.CharField(required=True, widget=forms.TextInput())
+    city = forms.CharField(required=True, widget=forms.TextInput())
+    country = forms.CharField(required=True, widget=forms.TextInput())
+    pincode = forms.IntegerField(required=True,widget=forms.NumberInput())
     user_type = forms.ChoiceField(choices=USER_TYPE, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
     # sale_admin = ModelChoiceField(queryset=s_admin, required=False)
     sale_manager = ModelChoiceField(queryset=s_manager, required=False)
+    status = forms.ChoiceField(choices=STATUS, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput())
+    profile_pic = forms.FileField()
 
     class Meta:
         model = Profile
         fields = (
             'first_name',
             'last_name',
-            'mobile',
+            'profile_pic',
+            'status',
+            'email',
+            'address',
+            'state',
+            'pincode',
+            'city',
+            'country',
             'user_type',
             # 'sale_admin',
             'sale_manager',

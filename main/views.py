@@ -38,7 +38,7 @@ def user_details(request, slug):
 def signup(request):
     if request.user.is_superuser:
         if request.method == 'POST':
-            form = SignUpForm(request.POST)
+            form = SignUpForm(request.POST, request.FILES)
             if form.is_valid():
                 f = form.save()
                 f.refresh_from_db()  # load the profile instance created by the signal
@@ -47,7 +47,13 @@ def signup(request):
                 f.profile.sale_manager = str(form.cleaned_data.get('sale_manager'))
                 f.profile.first_name = form.cleaned_data.get('first_name')
                 f.profile.last_name = form.cleaned_data.get('last_name')
-                f.profile.mobile = form.cleaned_data.get('mobile')
+                f.profile.email = form.cleaned_data.get('email')
+                f.profile.pincode = form.cleaned_data.get('pincode')
+                f.profile.state = form.cleaned_data.get('state')
+                f.profile.city = form.cleaned_data.get('city')
+                f.profile.country = form.cleaned_data.get('country')
+                f.profile.status = form.cleaned_data.get('status')
+                f.profile.address = form.cleaned_data.get('address')
                 f.save()
                 # return redirect('main:user')
                 return HttpResponseRedirect(f.profile.get_absolute_url())
@@ -66,7 +72,7 @@ def edit_user(request, slug):
     instance = get_object_or_404(Profile, slug=slug)
     if request.user.is_superuser:
         if request.method == 'POST':
-            form = EditUserForm(request.POST, instance=instance)
+            form = EditUserForm(request.POST, request.FILES, instance=instance)
             if form.is_valid():
                 f = form.save()
                 f.refresh_from_db()  # load the profile instance created by the signal
@@ -75,7 +81,13 @@ def edit_user(request, slug):
                 f.sale_manager = str(form.cleaned_data.get('sale_manager'))
                 f.first_name = form.cleaned_data.get('first_name')
                 f.last_name = form.cleaned_data.get('last_name')
-                f.mobile = form.cleaned_data.get('mobile')
+                f.email = form.cleaned_data.get('email')
+                f.pincode = form.cleaned_data.get('pincode')
+                f.state = form.cleaned_data.get('state')
+                f.city = form.cleaned_data.get('city')
+                f.country = form.cleaned_data.get('country')
+                f.status = form.cleaned_data.get('status')
+                f.address = form.cleaned_data.get('address')
                 f.save()
                 # return redirect('main:user')
                 return HttpResponseRedirect(f.get_absolute_url())
