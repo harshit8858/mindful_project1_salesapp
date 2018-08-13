@@ -7,8 +7,18 @@ from django.utils.text import slugify
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     slug1 = models.SlugField(unique=True, blank=True, null=True)
+    customer_code = models.CharField(max_length=100, blank=True, null=True)
     sale_manager = models.CharField(max_length=20)
+    status = models.BooleanField(default=False)
     address = models.TextField(max_length=500)
+    pincode = models.PositiveIntegerField(blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    area = models.CharField(max_length=100, blank=True, null=True)
+    lattitude = models.PositiveIntegerField(blank=True, null=True)
+    longitude = models.PositiveIntegerField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
     mobile = models.PositiveIntegerField()
 
     def __str__(self):

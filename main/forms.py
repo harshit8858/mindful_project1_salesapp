@@ -64,8 +64,18 @@ class CustomerForm(forms.ModelForm):
         model = Customer
         fields = (
             'name',
+            'customer_code',
             'sale_manager',
+            'status',
             'address',
+            'pincode',
+            'country',
+            'city',
+            'state',
+            'area',
+            'lattitude',
+            'longitude',
+            'email',
             'mobile',
         )
 
