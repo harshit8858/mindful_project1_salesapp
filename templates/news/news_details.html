@@ -5,6 +5,7 @@
 {{instance.date}}<br/>
 {{instance.title}}<br/>
 {{instance.body}}<br/>
+{{instance.expiry_date}}<br/>
 {% if request.user.is_superuser %}
     <a href="{{instance.get_absolute_url}}edit" class="btn btn-success btn-sm">
         Edit

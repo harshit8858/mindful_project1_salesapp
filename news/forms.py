@@ -10,7 +10,7 @@ class NewsForm(forms.ModelForm):
     class Meta:
         model = News
         fields = [
-            'date',
             'title',
             'body',
+            'expiry_date',
         ]

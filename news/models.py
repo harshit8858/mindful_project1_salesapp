@@ -8,10 +8,11 @@ from django.utils.text import slugify
 
 
 class News(models.Model):
-    date = models.DateField(help_text='YYYY-MM-DD')
+    date = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=1000, blank=True, null=True)
     body = models.TextField()
+    expiry_date = models.DateField(help_text='YYYY-MM-DD', blank=True, null=True)
 
     def __str__(self):
         return str(self.title)
