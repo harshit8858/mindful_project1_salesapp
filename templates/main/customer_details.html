@@ -5,9 +5,19 @@
     <hr/>
     <div class="container">
         Name: {{instance.name}}<br/>
+        Customer Code: {{instance.customer_code}}<br/>
         Sales Manager: {{instance.sale_manager}}<br/>
-        Mobile: {{instance.mobile}}<br/>
+        Status: {{instance.status}}<br/>
         Address: {{instance.address}}<br/>
+        Pincode: {{instance.pincode}}<br/>
+        Country: {{instance.country}}<br/>
+        City: {{instance.city}}<br/>
+        State: {{instance.state}}<br/>
+        Area: {{instance.area}}<br/>
+        Lattitude: {{instance.lattitude}}<br/>
+        Longitude: {{instance.longitude}}<br/>
+        Email: {{instance.email}}<br/>
+        Mobile: {{instance.mobile}}<br/>
         {% if request.user.is_superuser %}
             <a href="{{instance.get_absolute_url1}}edit">Edit</a>
             <a href="#myModal" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">

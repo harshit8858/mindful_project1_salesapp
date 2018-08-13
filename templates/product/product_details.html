@@ -4,6 +4,8 @@
 
     <div class="container">
         Product: {{ instance.name }}<br/>
+        Description: {{ instance.description }}<br/>
+        Product Code: {{instance.product_code}}<br/>
         Category: {{ instance.category }}<br/>
         {% if instance.image %}
             <img src="{{ instance.image.url }}" height="100px" width="100px"><br/>
@@ -11,6 +13,8 @@
             <img src="https://www.brother.ca/resources/images/no-product-image.png" height="100px" width="100px"><br/>
         {% endif %}
         Price: {{ instance.price }}<br/>
+        Discount: {{ instance.discount }}<br/>
+        Tax: {{ instance.tax }}<br/>
         Active: {{ instance.status }}<br/>
         <br/>
         {% if instance.created_by == request.user %}
