@@ -18,7 +18,11 @@ class ProductForm(forms.ModelForm):
         fields = [
             'category',
             'name',
+            'description',
+            'product_code',
             'price',
+            'discount',
+            'tax',
             'image',
             'status',
         ]
