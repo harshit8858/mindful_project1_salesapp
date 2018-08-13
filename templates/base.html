@@ -255,13 +255,18 @@
                 <a href="{% url 'order:new_order' %}">New-Order</a>
             {% endif %}
         </div>
-        <li class="{{active7}}">
-            <a href="{% url 'main:payment' %}" class="{{active7}}">
-                <i class="glyphicon glyphicon-credit-card">
-                    Payments
-                </i>
-            </a>
-        </li>
+        <button class="dropdown-btn {{active7}}">
+            <i class="glyphicon glyphicon-credit-card">
+                Payment
+            </i>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="{% url 'payment:payment' %}">All-Payments</a>
+            {% if request.user.is_superuser %}
+                <a href="{% url 'payment:payment_add' %}">New-Payment</a>
+            {% endif %}
+        </div>
     <br/>
         <li class="{{active8}}">
             <a href="{% url 'main:location_tracking' %}">

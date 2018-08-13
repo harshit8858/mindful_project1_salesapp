@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<hr/>
+{% for pay in payment %}
+    <a href="{% url 'payment:payment_details' pay.id %}" class="btn btn-defualt">
+        {{pay}}
+    </a>
+{% endfor %}
+
+{% endblock %}

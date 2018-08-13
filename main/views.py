@@ -214,14 +214,6 @@ def location_tracking(request):
     return render(request, 'main/location_tracking.html', context)
 
 
-def payment(request):
-    context = {
-        'active7': 'active',
-    }
-    return render(request, 'main/payment.html', context)
-
-
-
 def company_profile(request):
     cp = Company_Profile.objects.all()
     context = {
