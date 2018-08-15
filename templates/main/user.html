@@ -54,6 +54,27 @@
             <!--{{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>-->
         <!--</a>-->
     <!--{% endif %}-->
+<div class="panelpanel-defualt">
+    <div class="panel-footer">
+        <div class="container" style="margin:0px;">
+            <div class="col-sm-6">
+                <h4>
+                    <i class="glyphicon glyphicon-user">
+                        ALL-USER
+                    </i>
+                </h4>
+            </div>
+            <div class="col-sm-6" align="right">
+                <a href="{{request.user.get_absolute_url}}">
+                    <h3>
+                        {{request.user}}
+                    </h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h2>
     SALES-MANAGER
 </h2>
@@ -95,19 +116,18 @@
                     {{j.user.username}}
                 </a>
                  &nbsp; &nbsp;
-                <a href="{{j.get_absolute_url}}edit">
+                <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </a>
                  &nbsp; &nbsp;
-                <a href="{{j.get_absolute_url}}delete">
+                <a href="#myModal1" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
                     <i class="glyphicon glyphicon-trash"></i>
                 </a>
             </td>
         </tr>
     {% endfor %}
 </table>
-
-<hr/>
+<br/>
 
 <h2>
     SALESMEN
@@ -158,11 +178,11 @@
                             {{k.user.username}}
                         </a>
                          &nbsp; &nbsp;
-                        <a href="{{k.get_absolute_url}}edit">
+                        <a href="{{k.get_absolute_url}}edit" class="btn btn-info btn-sm">
                             <i class="glyphicon glyphicon-pencil"></i>
                         </a>
                          &nbsp; &nbsp;
-                        <a href="{{k.get_absolute_url}}delete">
+                        <a href="#myModal2" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </td>
@@ -171,5 +191,51 @@
         {% endfor %}
     {% endfor %}
 </table>
+
+<div id="myModal1" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
+                <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal2" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
+                <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
