@@ -55,37 +55,28 @@
         <!--</a>-->
     <!--{% endif %}-->
 
-<div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
-    <div class="col-sm-6">
-        <h5>
-            <i class="glyphicon glyphicon-user">
-                ALL-USER
-            </i>
-        </h5>
+
+    <div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
+        <div class="col-sm-6" style="color:grey;font-family:">
+            <h2>
+                <b>ALL USER</b>
+            </h2>
+        </div>
+        {% if request.user.is_superuser %}
+            <div class="col-sm-6" align="right" style="margin-top:15px;">
+                <a href="{% url 'main:signup' %}" class="btn btn-info">
+                    <i class="glyphicon glyphicon-plus"></i> Create New
+                </a>
+            </div>
+        {% endif %}
     </div>
-    <div class="col-sm-6" align="right">
-        <a href="{{request.user.get_absolute_url}}">
-            <h5>
-                {{request.user}}
-            </h5>
-        </a>
-    </div>
-</div>
 <hr/>
 
-{% if request.user.is_superuser %}
-    <div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
-        <a href="{% url 'main:signup' %}" class="btn btn-info">
-            <i class="glyphicon glyphicon-plus"></i> Create New
-        </a>
-    </div>
-{% endif %}
-
-<h2>
-    SALES-MANAGER
-</h2>
-<table class="table" align="center">
-    <thead>
+<h3>
+    <span style="color:#1dadc6;font-family:serif">SALES-MANAGER</span>
+</h3>
+<table class="table table-striped table-bordered table-hover" align="center">
+    <thead style="background-color:black;color:white">
         <tr>
             <th>
                 NAME
@@ -97,7 +88,22 @@
                 STATUS
             </th>
             <th>
-                USER ROLE
+            USER ROLE
+            </th>
+            <th>
+                ADDRESS
+            </th>
+            <th>
+                CITY
+            </th>
+            <th>
+                STATE
+            </th>
+            <th>
+                COUNTRY
+            </th>
+            <th>
+                PINCODE
             </th>
             <th>
                 USERNAME
@@ -120,15 +126,29 @@
                     {{j.user_type}}
                 </td>
                 <td>
+                    {{j.address}}
+                </td>
+                <td>
+                    {{j.city}}
+                </td>
+                <td>
+                    {{j.state}}
+                </td>
+                <td>
+                    {{j.country}}
+                </td>
+                <td>
+                    {{j.pincode}}
+                </td>
+                <td>
                     <a href="{{j.get_absolute_url}}">
                         {{j.user.username}}
                     </a>
-                     &nbsp; &nbsp;
-                    <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm">
+                    <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
                         <i class="glyphicon glyphicon-pencil"></i>
                     </a>
                      &nbsp; &nbsp;
-                    <a href="{{j.get_absolute_url}}delete" class="btn btn-danger btn-sm">
+                    <a href="{{j.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </td>
@@ -138,11 +158,11 @@
 </table>
 <br/>
 
-<h2>
-    SALESMEN
-</h2>
-<table class="table" align="center">
-    <thead>
+<h3 style="font-size:#1dadc6;">
+    <span style="color:#1dadc6;font-family:serif">SALESMEN</span>
+</h3>
+<table class="table table-striped table-bordered table-hover" align="center">
+    <thead style="background-color:black;color:white">
         <tr>
             <th>
                 NAME
@@ -158,6 +178,21 @@
             </th>
             <th>
                 SALES-MANAGER
+            </th>
+                        <th>
+                ADDRESS
+            </th>
+            <th>
+                CITY
+            </th>
+            <th>
+                STATE
+            </th>
+            <th>
+                COUNTRY
+            </th>
+            <th>
+                PINCODE
             </th>
             <th>
                 USERNAME
@@ -182,6 +217,21 @@
                     </td>
                     <td>
                         {{k.sale_manager}}
+                    </td>
+                    <td>
+                        {{k.address}}
+                    </td>
+                    <td>
+                        {{k.city}}
+                    </td>
+                    <td>
+                        {{k.state}}
+                    </td>
+                    <td>
+                        {{k.country}}
+                    </td>
+                    <td>
+                        {{k.pincode}}
                     </td>
                     <td>
                         <a href="{{k.get_absolute_url}}">
