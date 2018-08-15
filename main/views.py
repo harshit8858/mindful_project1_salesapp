@@ -54,6 +54,7 @@ def signup(request):
                 f.profile.country = form.cleaned_data.get('country')
                 f.profile.status = form.cleaned_data.get('status')
                 f.profile.address = form.cleaned_data.get('address')
+                f.profile.profile_pic = form.cleaned_data.get('profile_pic')
                 f.save()
                 # return redirect('main:user')
                 return HttpResponseRedirect(f.profile.get_absolute_url())
@@ -88,6 +89,7 @@ def edit_user(request, slug):
                 f.country = form.cleaned_data.get('country')
                 f.status = form.cleaned_data.get('status')
                 f.address = form.cleaned_data.get('address')
+                f.profile_pic = form.cleaned_data.get('profile_pic')
                 f.save()
                 # return redirect('main:user')
                 return HttpResponseRedirect(f.get_absolute_url())
@@ -104,7 +106,10 @@ def edit_user(request, slug):
 
 def delete_user(request, slug):
     instance = get_object_or_404(Profile, slug=slug)
+    instance_user = User.objects.get(username=instance.user.username)
     instance.delete()
+    # print(instance_user)
+    instance_user.delete()
     return redirect('main:user')
 
 
