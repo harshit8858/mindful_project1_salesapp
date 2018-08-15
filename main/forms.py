@@ -32,7 +32,7 @@ class SignUpForm(UserCreationForm):
     sale_manager = ModelChoiceField(queryset=s_manager, required=False)
     status = forms.ChoiceField(choices=STATUS, required=True, widget=forms.Select(attrs={'class':'dropdown-item', 'style':'width:200px'}))
     email = forms.EmailField(required=True, widget=forms.EmailInput())
-    profile_pic = forms.FileField()
+    profile_pic = forms.FileField(required=False)
 
     class Meta:
         model = User
