@@ -20,7 +20,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #328eda;
+        background-color: black;
         overflow-x: hidden;
         padding-top: 20px;
     }
@@ -50,19 +50,22 @@
         margin-left: 200px; /* Same as the width of the sidenav */
         font-size: 12px; /* Increased text to enable scrolling */
         padding: 0px 10px;
+        font-style: bold;
+        font-family: "Lato", sans-serif;
     }
 
     /* Add an active class to the active dropdown button */
     .active {
-        background-color: green;
+        background-color: #328eda;
         color: white;
     }
 
     /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
     .dropdown-container {
         display: none;
-        background-color: #00ace6;
+        background-color: grey;
         padding-left: 8px;
+        font-family: "Lato", sans-serif;
     }
 
     /* Optional: Style the caret down icon */
@@ -172,9 +175,6 @@
 		display: inline-block;
 		margin: 100px auto;
 	}
-	.active {
-	    background: #00ace6;
-	}
 </style>
 
 
@@ -182,7 +182,7 @@
 </head>
 
 <body >
-<b>
+
     <div class="sidenav">
         <h4 align="center" style="color:white">
             Mindful Machine
@@ -320,7 +320,7 @@
         {% block content %}
         {% endblock %}
     </div>
-</b>
+
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
         var dropdown = document.getElementsByClassName("dropdown-btn");
