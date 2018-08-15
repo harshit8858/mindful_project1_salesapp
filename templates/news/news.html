@@ -4,36 +4,26 @@
 
 
 <div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
-    <div class="col-sm-6">
-        <h5>
-            <i class="glyphicon glyphicon-bullhorn">
-                NEWS
-            </i>
-        </h5>
+    <div class="col-sm-6" style="color:grey;font-family:">
+        <h2>
+            <b>NEWS</b>
+        </h2>
     </div>
-    <div class="col-sm-6" align="right">
-        <a href="{{request.user.get_absolute_url}}">
-            <h5>
-                {{request.user}}
-            </h5>
-        </a>
-    </div>
+    {% if request.user.is_superuser %}
+        <div class="col-sm-6" align="right" style="margin-top:15px;">
+            <a href="{% url 'news:news_add' %}" class="btn btn-info">
+                <i class="glyphicon glyphicon-plus"></i> Create New
+            </a>
+        </div>
+    {% endif %}
 </div>
 <hr/>
 
-{% if request.user.is_superuser %}
-    <div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
-        <a href="{% url 'news:news_add' %}" class="btn btn-info">
-            <i class="glyphicon glyphicon-plus"></i> Create New
-        </a>
-    </div>
-{% endif %}
-
-<h2>
-    NEWS
-</h2>
-<table class="table" align="center">
-    <thead>
+<h3>
+    <span style="color:#1dadc6;font-family:serif">Top News</span>
+</h3>
+<table class="table table-striped table-bordered table-hover" align="center">
+    <thead style="background-color:black;color:white">
         <tr>
             <th>
                 TITLE
@@ -41,6 +31,16 @@
             <th>
                 POSTED ON
             </th>
+            <th>
+                VIEW
+            </th>
+            <th>
+                EDIT
+            </th>
+            <th>
+                DELETE
+            </th>
+        </tr>
     </thead>
     {% for n in news %}
         <tbody>
@@ -52,27 +52,25 @@
                     {{n.date}}
                 </td>
                 <td>
-                    <a href="{{n.get_absolute_url}}">
-                        {{n.user.username}}
-                    </a>
-                     &nbsp; &nbsp;
-                    <a href="{{n.get_absolute_url}}edit" class="btn btn-info btn-sm">
+                    <a href="{{n.get_absolute_url}}" class="btn btn-info btn-sm" style="align:right;">
                         <i class="glyphicon glyphicon-pencil"></i>
                     </a>
-                     &nbsp; &nbsp;
-                    <a href="{{n.get_absolute_url}}delete" class="btn btn-danger btn-sm">
+                </td>
+                <td>
+                    <a href="{{n.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{n.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
-
                 </td>
             </tr>
         </tbody>
     {% endfor %}
 </table>
 <br/>
-
-
-
 
 <!--{% if request.user.is_superuser %}-->
     <!--<a href="{% url 'news:news_add' %}" class="btn btn-success btn-sm">-->
