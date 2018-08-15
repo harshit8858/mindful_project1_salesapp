@@ -11,24 +11,24 @@
             {{ request.user.profile.first_name}} {{ request.user.profile.last_name}}
         </a>
         <ul>
-                    {% for j in manager %}
-                            <li>
-                                <a href="{{j.get_absolute_url}}">
-                                    {{j.first_name}} {{j.last_name}}
-                                </a>
-                                <ul>
-                                    {% for k in men %}
-                                        {% if k.sale_manager == j.user.username %}
-                                            <li>
-                                                <a href="{{k.get_absolute_url}}">
-                                                    {{k.first_name}} {{k.last_name}}
-                                                </a>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                    {% endfor %}
+            {% for j in manager %}
+                <li>
+                    <a href="{{j.get_absolute_url}}">
+                        {{j.first_name}} {{j.last_name}}
+                    </a>
+                    <ul>
+                        {% for k in men %}
+                            {% if k.sale_manager == j.user.username %}
+                                <li>
+                                    <a href="{{k.get_absolute_url}}">
+                                        {{k.first_name}} {{k.last_name}}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
         </ul>
     {% elif request.user.profile.user_type == 'salesmanager' %}
         <a href="{{request.user.profile.get_absolute_url}}">
