@@ -2,18 +2,90 @@
 
 {% block content %}
 
-{% if request.user.is_superuser %}
-    <a href="{% url 'news:news_add' %}" class="btn btn-success btn-sm">
-        Add
-    </a>
-{% endif %}
+
+<div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
+    <div class="col-sm-6">
+        <h5>
+            <i class="glyphicon glyphicon-bullhorn">
+                NEWS
+            </i>
+        </h5>
+    </div>
+    <div class="col-sm-6" align="right">
+        <a href="{{request.user.get_absolute_url}}">
+            <h5>
+                {{request.user}}
+            </h5>
+        </a>
+    </div>
+</div>
 <hr/>
-{% for n in news %}
-    <a href="{{n.get_absolute_url}}" class="btn btn-default">
-        {{n}}
-    </a>
-    <hr/>
-{% endfor %}
+
+{% if request.user.is_superuser %}
+    <div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
+        <a href="{% url 'news:news_add' %}" class="btn btn-info">
+            <i class="glyphicon glyphicon-plus"></i> Create New
+        </a>
+    </div>
+{% endif %}
+
+<h2>
+    NEWS
+</h2>
+<table class="table" align="center">
+    <thead>
+        <tr>
+            <th>
+                TITLE
+            </th>
+            <th>
+                POSTED ON
+            </th>
+    </thead>
+    {% for n in news %}
+        <tbody>
+            <tr>
+                <td>
+                    {{n.title}}
+                </td>
+                <td>
+                    {{n.date}}
+                </td>
+                <td>
+                    <a href="{{n.get_absolute_url}}">
+                        {{n.user.username}}
+                    </a>
+                     &nbsp; &nbsp;
+                    <a href="{{n.get_absolute_url}}edit" class="btn btn-info btn-sm">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                     &nbsp; &nbsp;
+                    <a href="{{n.get_absolute_url}}delete" class="btn btn-danger btn-sm">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+
+                </td>
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+<br/>
+
+
+
+
+<!--{% if request.user.is_superuser %}-->
+    <!--<a href="{% url 'news:news_add' %}" class="btn btn-success btn-sm">-->
+        <!--Add-->
+    <!--</a>-->
+<!--{% endif %}-->
+<!--<hr/>-->
+<!--{% for n in news %}-->
+    <!--<a href="{{n.get_absolute_url}}" class="btn btn-default">-->
+        <!--{{n}}-->
+    <!--</a>-->
+    <!--<hr/>-->
+<!--{% endfor %}-->
 
 
 

@@ -41,8 +41,14 @@
     }
 
     /* On mouse-over */
-    .sidenav a:hover, .dropdown-btn:hover {
-        color: #f1f1f1;
+     a:hover {
+        background-color: #151614;
+        color: #328eda;
+    }
+
+    .dropdown-btn:hover {
+        background-color: #328eda;
+        color: black;
     }
 
     /* Main content */
@@ -57,13 +63,13 @@
     /* Add an active class to the active dropdown button */
     .active {
         background-color: #328eda;
-        color: white;
+        color: black;
     }
 
     /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
     .dropdown-container {
         display: none;
-        background-color: grey;
+        background-color: #151614;
         padding-left: 8px;
         font-family: "Lato", sans-serif;
     }
@@ -78,6 +84,10 @@
     @media screen and (max-height: 450px) {
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 12px;}
+    }
+
+    .dropdown-container-menu {
+        font-size: 10px;
     }
     </style>
 
@@ -216,18 +226,30 @@
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
-            <a href="{% url 'product:product' %}">All Product</a>
+        <div class="dropdown-container" style="">
+            <a href="{% url 'product:product' %}">
+                <span style="font-size:13px">All Product</span>
+            </a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'product:add_product' %}">Add Product</a>
+                <a href="{% url 'product:add_product' %}">
+                    <span style="font-size:13px">Add Product</span>
+                </a>
             {% endif %}
-            <a href="{% url 'product:category' %}">All Category</a>
+            <a href="{% url 'product:category' %}">
+                <span style="font-size:13px">All Category</span>
+            </a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'product:add_category' %}">Add Category</a>
+                <a href="{% url 'product:add_category' %}">
+                    <span style="font-size:13px">Add Category</span>
+                </a>
             {% endif %}
-            <a href="{% url 'product:price_category' %}">All Price Category</a>
+            <a href="{% url 'product:price_category' %}">
+                <span style="font-size:13px">All Price Category</span>
+            </a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'product:add_price_category' %}">Add Price Category</a>
+                <a href="{% url 'product:add_price_category' %}">
+                    <span style="font-size:13px">Add Price Category</span>
+                </a>
             {% endif %}
         </div>
         {% if request.user.is_superuser %}
@@ -237,9 +259,13 @@
                 </i>
                 <i class="fa fa-caret-down"></i>
             </button>
-            <div class="dropdown-container">
-                <a href="{% url 'main:customer_list' %}">All-Customer</a>
-                <a href="{% url 'main:customer' %}">Create-Customer</a>
+            <div class="dropdown-container dropdown-container-menu">
+                <a href="{% url 'main:customer_list' %}">
+                    <span style="font-size:13px">All-Customer</span>
+                </a>
+                <a href="{% url 'main:customer' %}">
+                    <span style="font-size:13px">Create-Customer</span>
+                </a>
             </div>
         {% endif %}
     <br/>
@@ -250,9 +276,13 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'order:all_order' %}">All-Orders</a>
+            <a href="{% url 'order:all_order' %}">
+                <span style="font-size:13px">All-Orders</span>
+            </a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'order:new_order' %}">New-Order</a>
+                <a href="{% url 'order:new_order' %}">
+                    <span style="font-size:13px">New-Order</span>
+                </a>
             {% endif %}
         </div>
         <button class="dropdown-btn {{active7}}">
@@ -262,9 +292,13 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'payment:payment' %}">All-Payments</a>
+            <a href="{% url 'payment:payment' %}">
+                <span style="font-size:13px">All-Payments</span>
+            </a>
             {% if request.user.is_superuser %}
-                <a href="{% url 'payment:payment_add' %}">New-Payment</a>
+                <a href="{% url 'payment:payment_add' %}">
+                    <span style="font-size:13px">New-Payment</span>
+                </a>
             {% endif %}
         </div>
     <br/>
@@ -291,8 +325,12 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="{% url 'main:user' %}">All-Users</a>
-            <a href="{% url 'main:signup' %}">Create-User</a>
+            <a href="{% url 'main:user' %}">
+                <span style="font-size:13px">All-Users</span>
+            </a>
+            <a href="{% url 'main:signup' %}">
+                <span style="font-size:13px">Create-User</span>
+            </a>
         </div>
         <li class="{{active11}}">
             <a href="{% url 'main:company_profile' %}" class="{{active11}}">

@@ -73,11 +73,13 @@
 </div>
 <hr/>
 
-<div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
-    <a href="{% url 'main:signup' %}" class="btn btn-info">
-        <i class="glyphicon glyphicon-plus"></i> Create New
-    </a>
-</div>
+{% if request.user.is_superuser %}
+    <div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
+        <a href="{% url 'main:signup' %}" class="btn btn-info">
+            <i class="glyphicon glyphicon-plus"></i> Create New
+        </a>
+    </div>
+{% endif %}
 
 <h2>
     SALES-MANAGER
@@ -126,7 +128,7 @@
                         <i class="glyphicon glyphicon-pencil"></i>
                     </a>
                      &nbsp; &nbsp;
-                    <a href="#myModal1" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
+                    <a href="{{j.get_absolute_url}}delete" class="btn btn-danger btn-sm">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </td>
@@ -190,7 +192,7 @@
                             <i class="glyphicon glyphicon-pencil"></i>
                         </a>
                          &nbsp; &nbsp;
-                        <a href="#myModal2" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
+                        <a href="{{k.get_absolute_url}}delete" class="btn btn-danger btn-sm">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </td>
@@ -200,50 +202,5 @@
     {% endfor %}
 </table>
 
-<div id="myModal1" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="icon-box">
-                    <i class="material-icons">&#xE5CD;</i>
-                </div>
-                <h4 class="modal-title">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-            <div class="modal-body">
-                <p>Do you really want to delete these records? This process cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
-                <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">
-                    Delete
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="myModal2" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="icon-box">
-                    <i class="material-icons">&#xE5CD;</i>
-                </div>
-                <h4 class="modal-title">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-            <div class="modal-body">
-                <p>Do you really want to delete these records? This process cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
-                <a href="{{instance.get_absolute_url}}delete" class="btn btn-info">
-                    Delete
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
 {% endblock %}
