@@ -54,77 +54,84 @@
             <!--{{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>-->
         <!--</a>-->
     <!--{% endif %}-->
-<div class="panelpanel-defualt">
-    <div class="panel-footer">
-        <div class="container" style="margin:0px;">
-            <div class="col-sm-6">
-                <h4>
-                    <i class="glyphicon glyphicon-user">
-                        ALL-USER
-                    </i>
-                </h4>
-            </div>
-            <div class="col-sm-6" align="right">
-                <a href="{{request.user.get_absolute_url}}">
-                    <h3>
-                        {{request.user}}
-                    </h3>
-                </a>
-            </div>
-        </div>
+
+<div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
+    <div class="col-sm-6">
+        <h5>
+            <i class="glyphicon glyphicon-user">
+                ALL-USER
+            </i>
+        </h5>
     </div>
+    <div class="col-sm-6" align="right">
+        <a href="{{request.user.get_absolute_url}}">
+            <h5>
+                {{request.user}}
+            </h5>
+        </a>
+    </div>
+</div>
+<hr/>
+
+<div class="container" style="margin:0px;padding:0px 0px 0px 0px;" align="right">
+    <a href="{% url 'main:signup' %}" class="btn btn-info">
+        <i class="glyphicon glyphicon-plus"></i> Create New
+    </a>
 </div>
 
 <h2>
     SALES-MANAGER
 </h2>
-<hr/>
-<table class="table">
-    <tr>
-        <th>
-            NAME
-        </th>
-        <th>
-            E-MAIL
-        </th>
-        <th>
-            STATUS
-        </th>
-        <th>
-            USER ROLE
-        </th>
-        <th>
-            USERNAME
-        </th>
-    </tr>
-    {% for j in manager %}
+<table class="table" align="center">
+    <thead>
         <tr>
-            <td>
-                {{j.first_name}} {{j.last_name}}
-            </td>
-            <td>
-                {{j.email}}
-            </td>
-            <td>
-                {{j.status}}
-            </td>
-            <td>
-                {{j.user_type}}
-            </td>
-            <td>
-                <a href="{{j.get_absolute_url}}">
-                    {{j.user.username}}
-                </a>
-                 &nbsp; &nbsp;
-                <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm">
-                    <i class="glyphicon glyphicon-pencil"></i>
-                </a>
-                 &nbsp; &nbsp;
-                <a href="#myModal1" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
-            </td>
+            <th>
+                NAME
+            </th>
+            <th>
+                E-MAIL
+            </th>
+            <th>
+                STATUS
+            </th>
+            <th>
+                USER ROLE
+            </th>
+            <th>
+                USERNAME
+            </th>
         </tr>
+    </thead>
+    {% for j in manager %}
+        <tbody>
+            <tr>
+                <td>
+                    {{j.first_name}} {{j.last_name}}
+                </td>
+                <td>
+                    {{j.email}}
+                </td>
+                <td>
+                    {{j.status}}
+                </td>
+                <td>
+                    {{j.user_type}}
+                </td>
+                <td>
+                    <a href="{{j.get_absolute_url}}">
+                        {{j.user.username}}
+                    </a>
+                     &nbsp; &nbsp;
+                    <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                     &nbsp; &nbsp;
+                    <a href="#myModal1" class="trigger-btn btn btn-danger btn-sm" data-toggle="modal">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
     {% endfor %}
 </table>
 <br/>
@@ -132,28 +139,29 @@
 <h2>
     SALESMEN
 </h2>
-<hr/>
-<table class="table">
-    <tr>
-        <th>
-            NAME
-        </th>
-        <th>
-            E-MAIL
-        </th>
-        <th>
-            STATUS
-        </th>
-        <th>
-            USER ROLE
-        </th>
-        <th>
-            SALES-MANAGER
-        </th>
-        <th>
-            USERNAME
-        </th>
-    </tr>
+<table class="table" align="center">
+    <thead>
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                E-MAIL
+            </th>
+            <th>
+                STATUS
+            </th>
+            <th>
+                USER ROLE
+            </th>
+            <th>
+                SALES-MANAGER
+            </th>
+            <th>
+                USERNAME
+            </th>
+        </tr>
+    </thead>
     {% for j in manager %}
         {% for k in men %}
             {% if k.sale_manager == j.user.username %}
