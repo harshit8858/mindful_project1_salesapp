@@ -1,10 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <hr/>
-    <div class="container">
-        {% for pr in price %}
-            <a href="{{pr.get_absolute_url2}}" class="btn btn-default">{{ pr.price }}</a><hr/>
-        {% endfor %}
+
+
+<div class="container" style="margin:0px;padding:0px 0px 0px 0px;">
+    <div class="col-sm-6" style="color:grey;font-family:">
+        <h2>
+            <b>PRICE CATEGORY</b>
+        </h2>
     </div>
+    {% if request.user.is_superuser %}
+        <div class="col-sm-6" align="right" style="margin-top:15px;">
+            <a href="{% url 'product:add_price_category' %}" class="btn btn-info">
+                <i class="glyphicon glyphicon-plus"></i> Create New
+            </a>
+        </div>
+    {% endif %}
+</div>
+<hr/>
+
+<h3>
+    <span style="color:#1dadc6;font-family:serif">Top News</span>
+</h3>
+<table class="table table-striped table-bordered table-hover">
+    <thead style="background-color:black;color:white">
+        <tr>
+            <th>
+                PRICE
+            </th>
+        </tr>
+    </thead>
+    {% for pr in price %}
+        <tbody>
+            <tr>
+                <td>
+                    {{pr.price}}
+                </td>
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+<br/>
+
 {% endblock %}

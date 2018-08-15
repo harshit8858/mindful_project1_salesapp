@@ -187,6 +187,11 @@
 	}
 </style>
 
+<style>
+    table tr {
+        text-align: center;
+    }
+</style>
 
 
 </head>
@@ -340,17 +345,21 @@
         </li>
     <br/>
         {% if user.is_authenticated %}
+        <li>
             <a href="{% url 'main:logout' %}">
                 <i class="glyphicon glyphicon-log-out">
                     Log-Out
                 </i>
             </a>
+        </li>
         {% else %}
-            <a href="{% url 'main:login' %}">
-                <i class="glyphicon glyphicon-log-in">
-                    Log-In
-                </i>
-            </a>
+            <li>
+                <a href="{% url 'main:login' %}">
+                    <i class="glyphicon glyphicon-log-in">
+                        Log-In
+                    </i>
+                </a>
+            </li>>
         {% endif %}
     </div>
     <div class="main">
