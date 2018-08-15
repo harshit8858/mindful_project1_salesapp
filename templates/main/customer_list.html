@@ -80,7 +80,7 @@
                     {{cust.customer_code}}
                 </td>
                 <td>
-                    {{cust.sale_manaer}}
+                    {{cust.sale_manager}}
                 </td>
                 <td>
                     {{cust.email}}
@@ -89,7 +89,11 @@
                     {{cust.mobile}}
                 </td>
                 <td>
-                    {{cust.status}}
+                    {% if cust.status %}
+                        Active
+                    {% else %}
+                        In-Active
+                    {% endif %}
                 </td>
                 <td>
                     {{cust.address}}

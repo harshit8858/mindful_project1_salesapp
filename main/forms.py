@@ -106,6 +106,7 @@ class CustomerForm(forms.ModelForm):
             'city',
             'state',
             'area',
+            'status',
             'lattitude',
             'longitude',
             'email',
