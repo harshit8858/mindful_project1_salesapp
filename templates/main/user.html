@@ -5,54 +5,171 @@
     <!--{{ manager }}<br/>-->
     <!--{{ men }}<br/>-->
 
-    <br/>
-    {% if request.user.is_superuser %}
-        <a href="{{request.user.profile.get_absolute_url}}">
-            {{ request.user.profile.first_name}} {{ request.user.profile.last_name}}
-        </a>
-        <ul>
-            {% for j in manager %}
-                <li>
-                    <a href="{{j.get_absolute_url}}">
-                        {{j.first_name}} {{j.last_name}}
-                    </a>
-                    <ul>
-                        {% for k in men %}
-                            {% if k.sale_manager == j.user.username %}
-                                <li>
-                                    <a href="{{k.get_absolute_url}}">
-                                        {{k.first_name}} {{k.last_name}}
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
-    {% elif request.user.profile.user_type == 'salesmanager' %}
-        <a href="{{request.user.profile.get_absolute_url}}">
-            {{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>
-        </a>
-        <ul>
-            {% for j in manager %}
-                {% if j.user.username == request.user.username %}
-                    {% for k in men %}
-                        {% if k.sale_manager == j.user.username %}
-                            <li>
-                                <a href="{{k.get_absolute_url}}">
-                                    {{k.first_name}} {{k.last_name}}
-                                </a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <a href="{{request.user.profile.get_absolute_url}}">
-            {{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>
-        </a>
-    {% endif %}
+    <!--<br/>-->
+    <!--{% if request.user.is_superuser %}-->
+        <!--<a href="{{request.user.profile.get_absolute_url}}">-->
+            <!--{{ request.user.profile.first_name}} {{ request.user.profile.last_name}}-->
+        <!--</a>-->
+        <!--<ul>-->
+            <!--{% for j in manager %}-->
+                <!--<li>-->
+                    <!--<a href="{{j.get_absolute_url}}">-->
+                        <!--{{j.first_name}} {{j.last_name}}-->
+                    <!--</a>-->
+                    <!--<ul>-->
+                        <!--{% for k in men %}-->
+                            <!--{% if k.sale_manager == j.user.username %}-->
+                                <!--<li>-->
+                                    <!--<a href="{{k.get_absolute_url}}">-->
+                                        <!--{{k.first_name}} {{k.last_name}}-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            <!--{% endif %}-->
+                        <!--{% endfor %}-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--{% endfor %}-->
+        <!--</ul>-->
+    <!--{% elif request.user.profile.user_type == 'salesmanager' %}-->
+        <!--<a href="{{request.user.profile.get_absolute_url}}">-->
+            <!--{{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>-->
+        <!--</a>-->
+        <!--<ul>-->
+            <!--{% for j in manager %}-->
+                <!--{% if j.user.username == request.user.username %}-->
+                    <!--{% for k in men %}-->
+                        <!--{% if k.sale_manager == j.user.username %}-->
+                            <!--<li>-->
+                                <!--<a href="{{k.get_absolute_url}}">-->
+                                    <!--{{k.first_name}} {{k.last_name}}-->
+                                <!--</a>-->
+                            <!--</li>-->
+                        <!--{% endif %}-->
+                    <!--{% endfor %}-->
+                <!--{% endif %}-->
+            <!--{% endfor %}-->
+        <!--</ul>-->
+    <!--{% else %}-->
+        <!--<a href="{{request.user.profile.get_absolute_url}}">-->
+            <!--{{ request.user.profile.first_name}} {{ request.user.profile.last_name }}<br/>-->
+        <!--</a>-->
+    <!--{% endif %}-->
+<h2>
+    SALES-MANAGER
+</h2>
+<hr/>
+<table class="table">
+    <tr>
+        <th>
+            NAME
+        </th>
+        <th>
+            E-MAIL
+        </th>
+        <th>
+            STATUS
+        </th>
+        <th>
+            USER ROLE
+        </th>
+        <th>
+            USERNAME
+        </th>
+    </tr>
+    {% for j in manager %}
+        <tr>
+            <td>
+                {{j.first_name}} {{j.last_name}}
+            </td>
+            <td>
+                {{j.email}}
+            </td>
+            <td>
+                {{j.status}}
+            </td>
+            <td>
+                {{j.user_type}}
+            </td>
+            <td>
+                <a href="{{j.get_absolute_url}}">
+                    {{j.user.username}}
+                </a>
+                 &nbsp; &nbsp;
+                <a href="{{j.get_absolute_url}}edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                 &nbsp; &nbsp;
+                <a href="{{j.get_absolute_url}}delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<hr/>
+
+<h2>
+    SALESMEN
+</h2>
+<hr/>
+<table class="table">
+    <tr>
+        <th>
+            NAME
+        </th>
+        <th>
+            E-MAIL
+        </th>
+        <th>
+            STATUS
+        </th>
+        <th>
+            USER ROLE
+        </th>
+        <th>
+            SALES-MANAGER
+        </th>
+        <th>
+            USERNAME
+        </th>
+    </tr>
+    {% for j in manager %}
+        {% for k in men %}
+            {% if k.sale_manager == j.user.username %}
+                <tr>
+                    <td>
+                        {{k.first_name}} {{k.last_name}}
+                    </td>
+                    <td>
+                        {{k.email}}
+                    </td>
+                    <td>
+                        {{k.status}}
+                    </td>
+                    <td>
+                        {{k.user_type}}
+                    </td>
+                    <td>
+                        {{k.sale_manager}}
+                    </td>
+                    <td>
+                        <a href="{{k.get_absolute_url}}">
+                            {{k.user.username}}
+                        </a>
+                         &nbsp; &nbsp;
+                        <a href="{{k.get_absolute_url}}edit">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                         &nbsp; &nbsp;
+                        <a href="{{k.get_absolute_url}}delete">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</table>
 
 {% endblock %}
