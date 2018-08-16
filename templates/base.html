@@ -17,6 +17,7 @@
         height: 100%;
         width: 200px;
         position: fixed;
+        font-family:sans-serif;
         z-index: 1;
         top: 0;
         left: 0;
@@ -27,32 +28,31 @@
 
     /* Style the sidenav links and the dropdown button */
     .sidenav a, .dropdown-btn {
-        padding: 6px 8px 6px 16px;
+        padding: 8px 8px 8px 16px;
         text-decoration: none;
+        font-family: sans-serif;
         font-size: 16px;
         color: white;
         display: block;
         border: none;
+        background: none;
         width: 100%;
         text-align: left;
         cursor: pointer;
         outline: none;
     }
 
-    .dropdown-menu a {
-        color:white;
-    }
-
     /* On mouse-over */
-     a:hover {
-        background-color: #e5e5e5;
-        font-color: black;
-        color: black;
-    }
+
 
     button:hover {
         background-color: #e5e5e5;
-        color: black;
+        color: #224b8e;
+    }
+
+    .dropdown-container a:hover {
+        background-color: #e5e5e5;
+        color: #224b8e;
     }
 
     /* Main content */
@@ -103,9 +103,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-    body {
-		font-family: ;
-	}
+
 	.modal-confirm {
 		color: #636363;
 		width: 400px;
@@ -192,7 +190,10 @@
 </style>
 
 <style>
-    table tr thead{
+    table tr{
+        text-align: center;
+    }
+    table thead{
         text-align: center;
     }
 </style>
@@ -200,7 +201,7 @@
 
 </head>
 
-<body >
+<body>
     <div class="sidenav">
         <h4 align="center" style="color:white">
             Mindful Machine
@@ -210,27 +211,35 @@
         <li class="{{active1}}">
             <a href="{% url 'main:dashboard' %}">
                 <i class="glyphicon glyphicon-dashboard">
-                    Dashboard
+                    <span style="font-family:sans-serif;">
+                        Dashboard
+                    </span>
                 </i>
             </a>
         </li>
         <li class="{{active2}}">
             <a href="{% url 'news:news' %}">
                 <i class="glyphicon glyphicon-bullhorn">
-                    News
+                    <span style="font-family:sans-serif;">
+                        News
+                    </span>
                 </i>
             </a>
         </li>
         <li class="{{active3}}">
             <a href="{% url 'msg:msg' %}">
                 <i class="glyphicon glyphicon-envelope">
-                    Message
+                    <span style="font-family:sans-serif;">
+                        Message
+                    </span>
                 </i>
             </a>
         </li>
         <button class="dropdown-btn {{active4}}">
             <i class="glyphicon glyphicon-gift">
-                Products
+                <span style="font-family:sans-serif;">
+                    Products
+                </span>
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
@@ -263,7 +272,9 @@
         {% if request.user.is_superuser %}
             <button class="dropdown-btn {{active5}}">
                 <i class="glyphicon glyphicon-user">
-                    Customers
+                    <span style="font-family:sans-serif;">
+                        Customers
+                    </span>
                 </i>
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -279,7 +290,9 @@
     <br/>
         <button class="dropdown-btn {{active6}}">
             <i class="glyphicon glyphicon-shopping-cart">
-                Order
+                <span style="font-family:sans-serif;">
+                    Order
+                </span>
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
@@ -295,7 +308,9 @@
         </div>
         <button class="dropdown-btn {{active7}}">
             <i class="glyphicon glyphicon-credit-card">
-                Payment
+                <span style="font-family:sans-serif;">
+                    Payment
+                </span>
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
@@ -313,7 +328,9 @@
         <li class="{{active8}}">
             <a href="{% url 'main:location_tracking' %}">
                 <i class="glyphicon glyphicon-map-marker">
-                    Location-Tracking
+                    <span style="font-family:sans-serif;">
+                        Location-Tracking
+                    </span>
                 </i>
             </a>
         </li>
@@ -321,14 +338,18 @@
         <li class="{{active9}}">
             <a href="{% url 'main:reports' %}">
                 <i class="glyphicon glyphicon-stats">
-                    Reports
+                    <span style="font-family:sans-serif;">
+                        Reports
+                    </span>
                 </i>
             </a>
         </li>
     <br/>
         <button class="dropdown-btn {{active10}}">
             <i class="glyphicon glyphicon-user">
-                Users
+                <span style="font-family:sans-serif;">
+                    Users
+                </span>
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
@@ -343,7 +364,9 @@
         <li class="{{active11}}">
             <a href="{% url 'main:company_profile' %}" class="{{active11}}">
                 <i class="glyphicon glyphicon-briefcase">
-                    Comapny-Profile
+                    <span style="font-family:sans-serif;">
+                        Comapny-Profile
+                    </span>
                 </i>
             </a>
         </li>
@@ -352,7 +375,9 @@
         <li>
             <a href="{% url 'main:logout' %}">
                 <i class="glyphicon glyphicon-log-out">
-                    Log-Out
+                    <span style="font-family:sans-serif;">
+                        Log-Out
+                    </span>
                 </i>
             </a>
         </li>
@@ -360,7 +385,9 @@
             <li>
                 <a href="{% url 'main:login' %}">
                     <i class="glyphicon glyphicon-log-in">
-                        Log-In
+                        <span style="font-family:sans-serif;">
+                            Log-In
+                        </span>
                     </i>
                 </a>
             </li>>
