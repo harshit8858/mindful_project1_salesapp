@@ -1,21 +1,123 @@
+
+
+
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
+
+    <div class="panel panel-default">
+        <div class="panel-footer">
+            <div class="container" style="margin:0px;">
+                <div class="col-sm-6">
+                    Customer > Create
+                </div>
+                <div class="col-sm-6" align="right">
+                    <input style="float:right" type="submit" value="Save" class="bn btn-primary btn-sm" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4>
+      Customer Info
+    </h4>
+    <hr/>
+
+    <div class="container" style="margin:0px;'">
+        <div class="col-sm-3">
+            Customer Name:
+            <br/>
+            {{form.name}}
+        </div>
+        <div class="col-sm-3">
+            Sales-Manager:
+            <br/>
+            {{form.sale_manager}}
+        </div>
+        <div class="col-sm-3">
+            Customer Code:
+            <br/>
+            {{form.customer_code}}
+            <br/><br/><br/>
+        </div>
+        <div class="col-sm-3" >
+            Active
+            <br/>
+            {{form.status}}
+        </div>
+    </div>
+    <br/>
+
+    <h4>
+        Personal Details
+    </h4>
+    <hr/>
+    <div class="container" style="margin:0px;">
+        <div class="col-sm-4">
+          E-Mail:
+          <br/>
+          {{form.email}}
+          <br/><br/><br/>
+          Contact:
+          <br/>
+          {{form.mobile}}
+        </div>
+        <div class="col-sm-4">
+            Lattitude:
+            <br/>
+            {{form.lattitude}}
+          </div>
+        <div class="col-sm-4">
+            Longitude:
+            <br/>
+            {{form.longitude}}
+          </div>
+    </div>
+    <br/>
+
+    <h4>
+        Primary Address
+    </h4>
+    <hr/>
+    <div class="container" style="margin:0px;">
+        <div class="col-sm-3">
+            Address:
+            <br/>
+            {{form.address}}
+
+        </div>
+        <div class="col-sm-3">
+            Pincode:
+            <br/>
+            {{form.pincode}}
+            <br/><br/><br/>
+            Country:
+            <br/>
+            {{form.country}}
+        </div>
+        <div class="col-sm-3">
+            State:
+            <br/>
+            {{form.state}}
+            <br/><br/><br/>
+            City:
+            <br/>
+            {{form.city}}
+        </div>
+        <div class="col-sm-3">
+            Area:
+            <br/>
+            {{form.area}}
+        </div>
+    </div>
+    <br/>
+
+</form>
+
+
 {% endblock %}
+
+

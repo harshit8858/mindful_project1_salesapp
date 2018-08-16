@@ -22,7 +22,7 @@
 <h3>
     <span style="color:#1dadc6;font-family:serif">Top News</span>
 </h3>
-<table class="table table-striped table-bordered table-hover" align="center">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <thead style="background-color:black;color:white">
         <tr>
             <th>
@@ -49,37 +49,35 @@
         </tr>
     </thead>
     {% for pay in payment %}
-        <tbody>
-            <tr>
-                <td>
-                    {{pay.customer}}
-                </td>
-                <td>
-                    {{pay.date}}
-                </td>
-                <td>
-                    {{pay.amount}}
-                </td>
-                <td>
-                    {{pay.payment_type}}
-                </td>
-                <td>
-                    <a href="{% url 'payment:payment_details' pay.id %}" class="btn btn-info btn-sm" style="align:right;">
-                        view
-                    </a>
-                </td>
-                <td>
-                    <a href="{% url 'payment:payment_edit' pay.id %}" class="btn btn-info btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="{% url 'payment:payment_delete' pay.id %}" class="btn btn-danger btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>
+                {{pay.customer}}
+            </td>
+            <td>
+                {{pay.date}}
+            </td>
+            <td>
+                {{pay.amount}}
+            </td>
+            <td>
+                {{pay.payment_type}}
+            </td>
+            <td>
+                <a href="{% url 'payment:payment_details' pay.id %}" class="btn btn-default btn-sm" style="align:right;">
+                    view
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'payment:payment_edit' pay.id %}" class="btn btn-info btn-sm" style="align:right;">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'payment:payment_delete' pay.id %}" class="btn btn-danger btn-sm" style="align:right;">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
     {% endfor %}
 </table>
 <br/>

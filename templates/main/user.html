@@ -75,7 +75,7 @@
 <h3>
     <span style="color:#1dadc6;font-family:serif">SALES-MANAGER</span>
 </h3>
-<table class="table table-striped table-bordered table-hover" align="center">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <thead style="background-color:black;color:white">
         <tr>
             <th>
@@ -88,7 +88,7 @@
                 STATUS
             </th>
             <th>
-            USER ROLE
+                USER ROLE
             </th>
             <th>
                 ADDRESS
@@ -106,54 +106,51 @@
                 PINCODE
             </th>
             <th>
-                USERNAME
+
             </th>
         </tr>
     </thead>
     {% for j in manager %}
-        <tbody>
-            <tr>
-                <td>
-                    {{j.first_name}} {{j.last_name}}
-                </td>
-                <td>
-                    {{j.email}}
-                </td>
-                <td>
-                    {{j.status}}
-                </td>
-                <td>
-                    {{j.user_type}}
-                </td>
-                <td>
-                    {{j.address}}
-                </td>
-                <td>
-                    {{j.city}}
-                </td>
-                <td>
-                    {{j.state}}
-                </td>
-                <td>
-                    {{j.country}}
-                </td>
-                <td>
-                    {{j.pincode}}
-                </td>
-                <td>
-                    <a href="{{j.get_absolute_url}}">
-                        {{j.user.username}}
-                    </a>
-                    <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                    </a>
-                     &nbsp; &nbsp;
-                    <a href="{{j.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>
+                {{j.first_name}} {{j.last_name}}
+            </td>
+            <td>
+                {{j.email}}
+            </td>
+            <td>
+                {{j.status}}
+            </td>
+            <td>
+                {{j.user_type}}
+            </td>
+            <td>
+                {{j.address}}
+            </td>
+            <td>
+                {{j.city}}
+            </td>
+            <td>
+                {{j.state}}
+            </td>
+            <td>
+                {{j.country}}
+            </td>
+            <td>
+                {{j.pincode}}
+            </td>
+            <td>
+                <a href="{{j.get_absolute_url}}" class="btn btn-default btn-sm">
+                    view
+                </a>
+                <a href="{{j.get_absolute_url}}edit" class="btn btn-info btn-sm">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>                 &nbsp; &nbsp;
+                <a href="{{j.get_absolute_url}}delete" class="btn btn-danger btn-sm">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
     {% endfor %}
 </table>
 <br/>
@@ -161,7 +158,7 @@
 <h3 style="font-size:#1dadc6;">
     <span style="color:#1dadc6;font-family:serif">SALESMEN</span>
 </h3>
-<table class="table table-striped table-bordered table-hover" align="center">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <thead style="background-color:black;color:white">
         <tr>
             <th>
@@ -234,14 +231,12 @@
                         {{k.pincode}}
                     </td>
                     <td>
-                        <a href="{{k.get_absolute_url}}" class="btn btn-default">
+                        <a href="{{k.get_absolute_url}}" class="btn btn-default btn-sm">
                             view
                         </a>
-                         &nbsp; &nbsp;
                         <a href="{{k.get_absolute_url}}edit" class="btn btn-info btn-sm">
                             <i class="glyphicon glyphicon-pencil"></i>
                         </a>
-                         &nbsp; &nbsp;
                         <a href="{{k.get_absolute_url}}delete" class="btn btn-danger btn-sm">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>

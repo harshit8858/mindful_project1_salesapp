@@ -22,7 +22,7 @@
 <h3>
     <span style="color:#1dadc6;font-family:serif">Top News</span>
 </h3>
-<table class="table table-striped table-bordered table-hover" align="center">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <thead style="background-color:black;color:white">
         <tr>
             <th>
@@ -58,46 +58,44 @@
         </tr>
     </thead>
     {% for pro in product %}
-        <tbody>
-            <tr>
-                <td>
-                    {{pro.name}}
-                </td>
-                <td>
-                    {{pro.product_code}}
-                </td>
-                <td>
-                    {{pro.created_by}}
-                </td>
-                <td>
-                    {{pro.timestamp}}
-                </td>
-                <td>
-                    {{pro.price}}
-                </td>
-                <td>
-                    {{pro.discount}}
-                </td>
-                <td>
-                    {{pro.status}}
-                </td>
-                <td>
-                    <a href="{{pro.get_absolute_url}}" class="btn btn-info btn-sm" style="align:right;">
-                        view
-                    </a>
-                </td>
-                <td>
-                    <a href="{{pro.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{pro.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>
+                {{pro.name}}
+            </td>
+            <td>
+                {{pro.product_code}}
+            </td>
+            <td>
+                {{pro.created_by}}
+            </td>
+            <td>
+                {{pro.timestamp}}
+            </td>
+            <td>
+                {{pro.price}}
+            </td>
+            <td>
+                {{pro.discount}}
+            </td>
+            <td>
+                {{pro.status}}
+            </td>
+            <td>
+                <a href="{{pro.get_absolute_url}}" class="btn btn-default btn-sm" style="align:right;">
+                    view
+                </a>
+            </td>
+            <td>
+                <a href="{{pro.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+            </td>
+            <td>
+                <a href="{{pro.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
     {% endfor %}
 </table>
 <br/>
