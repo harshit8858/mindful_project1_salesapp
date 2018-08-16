@@ -19,56 +19,92 @@
 </div>
 <hr/>
 
+<!--<table class="table table-striped table-bordered table-hover table-condensed">-->
+    <!--<thead style="background-color:black;color:white">-->
+        <!--<tr>-->
+            <!--<th>-->
+                <!--POSTED BY-->
+            <!--</th>-->
+            <!--<th>-->
+                <!--POSTED ON-->
+            <!--</th>-->
+            <!--<th>-->
+                <!--VIEW-->
+            <!--</th>-->
+            <!--<th>-->
+                <!--EDIT-->
+            <!--</th>-->
+            <!--<th>-->
+                <!--DELETE-->
+            <!--</th>-->
+        <!--</tr>-->
+    <!--</thead>-->
+    <!--{% for m in msg %}-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--{{m.user}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{m.timestamp}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<a href="{{m.get_absolute_url}}" class="btn btn-default btn-sm" style="align:right;">-->
+                    <!--view-->
+                <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<a href="{{m.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">-->
+                    <!--<i class="glyphicon glyphicon-pencil"></i>-->
+                <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<a href="{{m.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">-->
+                    <!--<i class="glyphicon glyphicon-trash"></i>-->
+                <!--</a>-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--{% endfor %}-->
+<!--</table>-->
+<!--<br/>-->
+
+
+
+
 <h3>
-    <span style="color:#1dadc6;font-family:serif">Top News</span>
+    <span style="color:#1dadc6;font-family:serif">Messages</span>
 </h3>
 <table class="table table-striped table-bordered table-hover table-condensed">
     <thead style="background-color:black;color:white">
         <tr>
             <th>
-                POSTED BY
+                USER
             </th>
             <th>
-                POSTED ON
+                MESSAGE COUNT
             </th>
             <th>
                 VIEW
             </th>
-            <th>
-                EDIT
-            </th>
-            <th>
-                DELETE
-            </th>
         </tr>
     </thead>
-    {% for m in msg %}
+    {% for msg in msg %}
         <tr>
             <td>
-                {{m.user}}
+                {{msg.user.profile.user.username}}
             </td>
             <td>
-                {{m.timestamp}}
+                {{msg.user.profile.msg_count}}
             </td>
             <td>
-                <a href="{{m.get_absolute_url}}" class="btn btn-default btn-sm" style="align:right;">
+                <a href="{% url 'msg:msg_user' msg.user.profile.id %}" class="btn btn-default btn-sm">
                     view
-                </a>
-            </td>
-            <td>
-                <a href="{{m.get_absolute_url}}edit" class="btn btn-info btn-sm" style="align:right;">
-                    <i class="glyphicon glyphicon-pencil"></i>
-                </a>
-            </td>
-            <td>
-                <a href="{{m.get_absolute_url}}delete" class="btn btn-danger btn-sm" style="align:right;">
-                    <i class="glyphicon glyphicon-trash"></i>
                 </a>
             </td>
         </tr>
     {% endfor %}
 </table>
 <br/>
+
 
 
 <!--{% if request.user.is_superuser %}-->

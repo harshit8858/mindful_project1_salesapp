@@ -1,17 +1,37 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import auth
+from django.contrib.auth.models import User
+from main.models import *
 from .forms import *
 from .models import *
 
 
 def msg(request):
-    msg = Message.objects.all()
+    msg = Message.objects.all().order_by('-timestamp')
+    profile = Profile.objects.all()
+    for pro in profile:
+        pro.msg_count = 0
+        for m in msg:
+            if m.user.username == pro.user.username:
+                pro.msg_count = pro.msg_count + 1
+                pro.save()
     context = {
         'msg': msg,
         'active3': 'active',
+        'profile': profile,
     }
     return render(request, 'msg/msg.html', context)
+
+
+def msg_user(request, d):
+    instance = Profile.objects.get(id=d)
+    msg = Message.objects.filter(user=instance.user).order_by('-timestamp')
+    context = {
+        'instance': instance,
+        'msg': msg,
+    }
+    return render(request, 'msg/msg_user.html', context)
 
 
 def msg_add(request):
