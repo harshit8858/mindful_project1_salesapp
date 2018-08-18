@@ -6,7 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     body {
         font-family: "Lato", sans-serif;
@@ -42,18 +41,6 @@
         outline: none;
     }
 
-    /* On mouse-over */
-
-
-    button:hover {
-        background-color: #e5e5e5;
-        color: #224b8e;
-    }
-
-    .dropdown-container a:hover {
-        background-color: #e5e5e5;
-        color: #224b8e;
-    }
 
     /* Main content */
     .main {
@@ -67,7 +54,7 @@
     /* Add an active class to the active dropdown button */
     .active {
         background-color: #328eda;
-        color: black;
+        color: white;
     }
 
     /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
@@ -77,6 +64,36 @@
         padding-left: 8px;
         font-family: "Lato", sans-serif;
         text-align : center;
+    }
+
+    .dropdown-container1 {
+        display: block;
+        background-color: #151614;
+        padding-left: 8px;
+        font-family: "Lato", sans-serif;
+        text-align : center;
+    }
+
+
+    /* On mouse-over */
+    button:hover {
+        background-color: #e5e5e5;
+        color: #224b8e;
+    }
+
+    button:active {
+        background-color: #328eda;
+        color: white;
+    }
+
+    .dropdown-container a:hover {
+        background-color: #e5e5e5;
+        color: #224b8e;
+    }
+
+    .dropdown-container1 a:hover {
+        background-color: #e5e5e5;
+        color: #224b8e;
     }
 
     /* Optional: Style the caret down icon */
@@ -95,6 +112,7 @@
         font-size: 10px;
     }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
@@ -248,7 +266,11 @@
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container" style="">
+        {% if dropdown1 %}
+            <div class="{{dropdown1}}">
+        {% else %}
+            <div class="dropdown-container">
+        {% endif %}
             <a href="{% url 'product:product' %}">
                 <span style="font-size:13px">All Product</span>
             </a>
@@ -283,7 +305,11 @@
                 </i>
                 <i class="fa fa-caret-down"></i>
             </button>
-            <div class="dropdown-container dropdown-container-menu">
+            {% if dropdown2 %}
+                <div class="{{dropdown2}}">
+            {% else %}
+                <div class="dropdown-container">
+            {% endif %}
                 <a href="{% url 'main:customer_list' %}">
                     <span style="font-size:13px">All-Customer</span>
                 </a>
@@ -301,7 +327,11 @@
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        {% if dropdown3 %}
+            <div class="{{dropdown3}}">
+        {% else %}
+            <div class="dropdown-container">
+        {% endif %}
             <a href="{% url 'order:all_order' %}">
                 <span style="font-size:13px">All-Orders</span>
             </a>
@@ -319,7 +349,11 @@
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        {% if dropdown4 %}
+            <div class="{{dropdown4}}">
+        {% else %}
+            <div class="dropdown-container">
+        {% endif %}
             <a href="{% url 'payment:payment' %}">
                 <span style="font-size:13px">All-Payments</span>
             </a>
@@ -358,7 +392,11 @@
             </i>
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        {% if dropdown5 %}
+            <div class="{{dropdown5}}">
+        {% else %}
+            <div class="dropdown-container">
+        {% endif %}
             <a href="{% url 'main:user' %}">
                 <span style="font-size:13px">All-Users</span>
             </a>

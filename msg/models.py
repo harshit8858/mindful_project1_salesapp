@@ -7,7 +7,7 @@ from django.utils.text import slugify
 
 
 class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     slug = models.SlugField(unique=True)
     timestamp = models.DateTimeField(auto_now=True)
     message = models.TextField()

@@ -11,6 +11,7 @@ def category(request):
     context = {
         'category': category,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/category.html', context)
 
@@ -20,6 +21,7 @@ def product(request):
     context = {
         'product': product,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/product.html', context)
 
@@ -29,6 +31,7 @@ def price_category(request):
     context = {
         'price': price,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/price_category.html', context)
 
@@ -46,6 +49,7 @@ def add_category(request):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_category.html', context)
@@ -67,6 +71,7 @@ def add_product(request):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_product.html', context)
@@ -88,6 +93,7 @@ def add_price_category(request):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_price_category.html', context)
@@ -102,6 +108,7 @@ def category_detail(request, slug1):
         'instance': instance,
         'product': product,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/category_details.html', context)
 
@@ -121,6 +128,7 @@ def category_edit(request, slug1):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_category.html', context)
@@ -139,6 +147,7 @@ def product_detail(request, slug):
     context = {
         'instance': instance,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/product_details.html', context)
 
@@ -158,6 +167,7 @@ def product_edit(request, slug):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_product.html', context)
@@ -178,6 +188,7 @@ def price_category_detail(request, slug2):
         'instance': instance,
         'product': product,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     return render(request, 'product/price_category_details.html', context)
 
@@ -197,6 +208,7 @@ def price_category_edit(request, slug2):
     context = {
         'form': form,
         'active4': 'active',
+        'dropdown1': 'dropdown-conatiner1',
     }
     if request.user.is_superuser:
         return render(request, 'product/add_price_category.html', context)

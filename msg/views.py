@@ -5,14 +5,16 @@ from django.contrib.auth.models import User
 from main.models import *
 from .forms import *
 from .models import *
+from datetime import datetime
 
 
 def msg(request):
     msg = Message.objects.all().order_by('-timestamp')
+    msg1 = Message.objects.all()
     profile = Profile.objects.all()
     for pro in profile:
         pro.msg_count = 0
-        for m in msg:
+        for m in msg1:
             if m.user.username == pro.user.username:
                 pro.msg_count = pro.msg_count + 1
                 pro.save()
@@ -24,15 +26,15 @@ def msg(request):
     return render(request, 'msg/msg.html', context)
 
 
-def msg_user(request, d):
-    instance = Profile.objects.get(id=d)
-    msg = Message.objects.filter(user=instance.user).order_by('-timestamp')
-    context = {
-        'instance': instance,
-        'msg': msg,
-    }
-    return render(request, 'msg/msg_user.html', context)
-
+# def msg_user(request, d):
+#     instance = Profile.objects.get(id=d)
+#     msg = Message.objects.filter(user=instance.user).order_by('-timestamp')
+#     context = {
+#         'instance': instance,
+#         'msg': msg,
+#     }
+#     return render(request, 'msg/msg_user.html', context)
+#
 
 def msg_add(request):
     if request.method == 'POST':
@@ -40,7 +42,8 @@ def msg_add(request):
         if form.is_valid():
             f = form.save()
             f.save()
-            return HttpResponseRedirect(f.get_absolute_url())
+            return redirect('msg:msg')
+            # return HttpResponseRedirect(f.get_absolute_url())
     else:
         form = MessageForm()
     context = {
@@ -49,6 +52,31 @@ def msg_add(request):
     }
     if request.user.is_superuser:
         return render(request, 'msg/msg_add.html', context)
+    else:
+        return render(request, 'main/not_authorized.html')
+
+
+def msg_user_add(request, id):
+    instance = Profile.objects.get(id=id)
+    msg = Message.objects.filter(user=instance.user).order_by('-timestamp')
+    if request.method == 'POST':
+        form = MessageUserForm(request.POST)
+        if form.is_valid():
+            f = form.save()
+            f.user = instance.user
+            f.save()
+            # return HttpResponseRedirect(f.get_absolute_url())
+            return redirect('msg:msg_user_add', id)
+    else:
+        form = MessageUserForm()
+    context = {
+        'form': form,
+        'active3': 'active',
+        'instance': instance,
+        'msg': msg,
+    }
+    if request.user.is_superuser:
+        return render(request, 'msg/msg_user_add.html', context)
     else:
         return render(request, 'main/not_authorized.html')
 

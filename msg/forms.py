@@ -13,3 +13,12 @@ class MessageForm(forms.ModelForm):
             'user',
             'message',
         ]
+
+
+class MessageUserForm(forms.ModelForm):
+
+    class Meta:
+        model = Message
+        fields = [
+            'message',
+        ]

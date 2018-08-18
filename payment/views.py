@@ -8,6 +8,7 @@ def payment(request):
     context = {
         'payment': payment,
         'active7': 'active',
+        'dropdown4': 'dropdown-container1',
     }
     return render(request, 'payment/payment.html', context)
 
@@ -24,6 +25,7 @@ def payment_add(request):
     context = {
         'form': form,
         'active7': 'active',
+        'dropdown4': 'dropdown-container1',
     }
     if request.user.is_superuser:
         return render(request, 'payment/payment_add.html', context)
@@ -36,6 +38,7 @@ def payment_details(request, id):
     context = {
         'instance': instance,
         'active7': 'active',
+        'dropdown4': 'dropdown-container1',
     }
     return render(request, 'payment/payment_details.html', context)
 
@@ -53,6 +56,7 @@ def payment_edit(request, id):
     context = {
         'form': form,
         'active7': 'active',
+        'dropdown4': 'dropdown-container1',
     }
     if request.user.is_superuser:
         return render(request, 'payment/payment_add.html',context)

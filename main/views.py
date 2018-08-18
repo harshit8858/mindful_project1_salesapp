@@ -20,6 +20,7 @@ def user(request):
             'manager': manager,
             'men': men,
             'active10': 'active',
+            'dropdown5': 'dropdown-container1',
         }
         return render(request, 'main/user.html', context)
     else:
@@ -31,6 +32,7 @@ def user_details(request, slug):
     context = {
         'instance': instance,
         'active10': 'active',
+        'dropdown5': 'dropdown-container1',
     }
     return render(request, 'main/user_details.html', context)
 
@@ -63,6 +65,7 @@ def signup(request):
         context = {
             'form': form,
             'active10': 'active',
+            'dropdown5': 'dropdown-container1',
         }
         return render(request, 'main/signup.html', context)
     else:
@@ -98,6 +101,7 @@ def edit_user(request, slug):
         context = {
             'form': form,
             'active10': 'active',
+            'dropdown5': 'dropdown-container1',
         }
         return render(request, 'main/signup.html', context)
     else:
@@ -156,6 +160,7 @@ def customer(request):
         context = {
             'form': form,
             'active5': 'active',
+            'dropdown2': 'dropdown-container1',
         }
         return render(request, 'main/customer.html', context)
     else:
@@ -169,6 +174,7 @@ def customer_list(request):
         'sale_manager': sale_manager,
         'customer': customer,
         'active5': 'active',
+        'dropdown2': 'dropdown-container1',
     }
     return render(request, 'main/customer_list.html', context)
 
@@ -178,6 +184,7 @@ def customer_details(request, slug1):
     context = {
         'instance': instance,
         'active5': 'active',
+        'dropdown2': 'dropdown-container1',
     }
     return render(request, 'main/customer_details.html', context)
 
@@ -198,6 +205,7 @@ def edit_customer(request, slug1):
         context = {
             'form': form,
             'active5': 'active',
+            'dropdown2': 'dropdown-container1',
         }
         return render(request, 'main/customer.html', context)
     else:

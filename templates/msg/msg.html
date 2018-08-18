@@ -80,30 +80,67 @@
                 USER
             </th>
             <th>
-                MESSAGE COUNT
+                LAST MESSAGE TIME
             </th>
             <th>
-                VIEW
+                LAST MESSAGE
             </th>
         </tr>
     </thead>
     {% for msg in msg %}
         <tr>
             <td>
-                {{msg.user.profile.user.username}}
+                {{msg.user.username}}
             </td>
             <td>
-                {{msg.user.profile.msg_count}}
+                {{msg.timestamp}}
             </td>
             <td>
-                <a href="{% url 'msg:msg_user' msg.user.profile.id %}" class="btn btn-default btn-sm">
-                    view
+                <a href="{% url 'msg:msg_user_add' msg.user.profile.id %}">
+                    {{msg.message}}
                 </a>
             </td>
         </tr>
     {% endfor %}
 </table>
 <br/>
+
+
+<h3>
+    <span style="color:#1dadc6;font-family:serif">Messages</span>
+</h3>
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <thead style="background-color:black;color:white">
+        <tr>
+            <th>
+                USER
+            </th>
+            <th>
+                LAST MESSAGE TIME
+            </th>
+            <th>
+                LAST MESSAGE
+            </th>
+        </tr>
+    </thead>
+    {% for pro in profile %}
+        <tr>
+            <td>
+                {{pro.user.username}}
+            </td>
+            <td>
+                {{pro.msg.timestamp}}
+            </td>
+            <td>
+                <a href="{% url 'msg:msg_user_add' pro.id %}">
+                    {{pro.msg.message}}
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br/>
+
 
 
 
